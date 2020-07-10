@@ -16,17 +16,17 @@ from coverage_pyver_pragma import PyVerPragmaPlugin, make_regexes, not_version_r
 def test_not_version_regex():
 	counter = 1
 
-	for comment_string in ["#", "# ", "#  ", "#\t", "# \t", "# \t ", "#\t "]:
+	for comment_string in ['#', "# ", "#  ", "#\t", "# \t", "# \t ", "#\t "]:
 		for pragma_string in ["pragma", "PRAGMA"]:
 			for post_pragma_space in ['', ':', ": ", ":\t", "  "]:
 				for no_string in ["no", "NO"]:
-					for post_no_space in ['', " ", "\t", "  "]:
+					for post_no_space in ['', ' ', "\t", "  "]:
 						for cover_string in ["cover", "COVER"]:
-							for post_cover_space in ['', " ", "\t", "  "]:
-								for pre_version_sign in [">", "<", ">=", "<=", ""]:
+							for post_cover_space in ['', ' ', "\t", "  "]:
+								for pre_version_sign in ['>', '<', ">=", "<=", '']:
 									for py_string in ["Py", "PY", "py"]:
 										for version in [30, 31, 32, 33, 34, 35, 36, 37, 38, 39]:
-											for post_version_sign in ["+", ""]:
+											for post_version_sign in ['+', '']:
 												test_string = f"{comment_string}{pragma_string}{post_pragma_space}{no_string}{post_no_space}{cover_string}{post_cover_space}({pre_version_sign}{py_string}{version}{post_version_sign})"
 												# print(f"[{counter} TESTING: {test_string}]")
 
@@ -34,14 +34,14 @@ def test_not_version_regex():
 													raise AssertionError(f"[{counter} FAIL: {test_string}]")
 												counter += 1
 
-	for comment_string in ["#", "# ", "#  ", "#\t", "# \t", "# \t ", "#\t "]:
+	for comment_string in ['#', "# ", "#  ", "#\t", "# \t", "# \t ", "#\t "]:
 		for pragma_string in ["pragma", "PRAGMA"]:
 			for post_pragma_space in ['', ':', ": ", ":\t", "  "]:
 				for no_string in ["no", "NO"]:
-					for post_no_space in ['', " ", "\t", "  "]:
+					for post_no_space in ['', ' ', "\t", "  "]:
 						for cover_string in ["cover", "COVER"]:
-							for post_cover_space in ['', " ", "\t", "  "]:
-								for post_cover_text in ["", "abcdefg", "hello world"]:
+							for post_cover_space in ['', ' ', "\t", "  "]:
+								for post_cover_text in ['', "abcdefg", "hello world"]:
 									test_string = f"{comment_string}{pragma_string}{post_pragma_space}{no_string}{post_no_space}{cover_string}{post_cover_space}{post_cover_text}"
 									# print(f"[{counter} TESTING: {test_string}]")
 
@@ -83,21 +83,21 @@ def test_correct_version_regex():
 
 		# TODO: Plus
 		for pre_version_sign, minor_versions in zip(
-			[">", "<", ">=", "<=", ""],
+			['>', '<', ">=", "<=", ''],
 			[range(0, python_version.minor), range(python_version.minor + 1, 10), range(0, python_version.minor + 1), range(python_version.minor, 10), [python_version.minor], [python_version.minor]]
 			):
 			for minor_version in minor_versions:
 				version = 30 + minor_version
 
-				for comment_string in ["#", "# ", "#  ", "#\t", "# \t", "# \t ", "#\t "]:
+				for comment_string in ['#', "# ", "#  ", "#\t", "# \t", "# \t ", "#\t "]:
 					for pragma_string in ["pragma", "PRAGMA"]:
 						for post_pragma_space in ['', ':', ": ", ":\t", "  "]:
 							for no_string in ["no", "NO"]:
-								for post_no_space in ['', " ", "\t", "  "]:
+								for post_no_space in ['', ' ', '\t', "  "]:
 									for cover_string in ["cover", "COVER"]:
-										for post_cover_space in ['', " ", "\t", "  "]:
+										for post_cover_space in ['', ' ', '\t', "  "]:
 											for py_string in ["Py", "PY", "py"]:
-												# for post_version_sign in ["+", ""]:
+												# for post_version_sign in ['+', '']:
 
 												test_string = f"{comment_string}{pragma_string}{post_pragma_space}{no_string}{post_no_space}{cover_string}{post_cover_space}({pre_version_sign}{py_string}{version}{post_version_sign})"  # print(f"[{counter} TESTING: {test_string}]")
 

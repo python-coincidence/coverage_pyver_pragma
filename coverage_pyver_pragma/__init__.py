@@ -27,10 +27,15 @@ Plugin for Coverage.py to selectively ignore branches depending on the Python ve
 # stdlib
 import re
 import sys
-from typing import List, NamedTuple, Pattern
+from typing import TYPE_CHECKING, Any, List, NamedTuple, Pattern, Union
 
 # 3rd party
 import coverage  # type: ignore
+
+if TYPE_CHECKING:
+
+	# stdlib
+	from sys import _version_info as VersionInfo
 
 __author__: str = "Dominic Davis-Foster"
 __copyright__: str = "2020 Dominic Davis-Foster"
@@ -44,12 +49,31 @@ not_version_regex: str = re.compile(fr"{regex_main}\s*((?!\(.{{0,2}}(py|PY|Py)3\
 
 
 class Version(NamedTuple):
+	"""
+	:class:`~typing.NamedTuple` with the same elements as :func:`sys.version_info`.
+
+	:type major: int
+	:type minor: int
+	:type micro: int
+
+	"""
+
 	major: int
 	minor: int
 	micro: int
+	releaselevel: str
+	serial: str
 
 
-def make_regexes(version_tuple: Version) -> List[Pattern]:
+def make_regexes(version_tuple: Union["Version", "VersionInfo"]) -> List[Pattern]:
+	"""
+	Generate a list of regular expressions to match all valid ignores for the given Python version.
+
+	:param version_tuple: The Python version.
+	:type version_tuple: :class:`~typing.NamedTuple` with the attributes ``major`` and ``minor``.
+
+	:return: List of regular expressions.
+	"""
 	if version_tuple.major == 3:
 		# Python 3.X
 
@@ -66,17 +90,28 @@ def make_regexes(version_tuple: Version) -> List[Pattern]:
 				re.compile(fr"{regex_main}\s*\(<(py|PY|Py)3({'|'.join(less_than_versions)})\)"),
 				re.compile(fr"{regex_main}\s*\(<=(py|PY|Py)3({'|'.join(less_equal_versions)})\)"),
 				re.compile(fr"{regex_main}\s*\(>(py|PY|Py)3({'|'.join(greater_than_versions)})\)"),
-				re.compile(fr"{regex_main}\s*\((py|PY|Py)3({'|'.join(greater_than_versions)})+\)"),
+				re.compile(fr"{regex_main}\s*\((py|PY|Py)3({'|'.join(greater_than_versions)})\+\)"),
 				re.compile(fr"{regex_main}\s*\(>=(py|PY|Py)3({'|'.join(greater_equal_versions)})\)"),
 				re.compile(fr"{regex_main}\s*\((py|PY|Py)3({'|'.join(exact_versions)})\)"),
 				]
 
 		return excludes
 
+	else:
+		raise ValueError("Unknown Python version.")
+
 
 class PyVerPragmaPlugin(coverage.CoveragePlugin):
+	"""
+	Plugin for Coverage.py to selectively ignore branches depending on the Python version.
+	"""
 
-	def configure(self, config):
+	def configure(self, config: Any) -> None:
+		"""
+		Configure the plugin.
+
+		:param config:
+		"""
 
 		# Coverage.py gives either a Coverage() object, or a CoverageConfig() object.
 		if isinstance(config, coverage.Coverage):
@@ -98,4 +133,16 @@ class PyVerPragmaPlugin(coverage.CoveragePlugin):
 
 
 def coverage_init(reg, options):
+	"""
+	Initialise the plugin.
+
+	:param reg:
+	:type reg:
+	:param options:
+	:type options:
+
+	:return:
+	:rtype:
+	"""
+
 	reg.add_configurer(PyVerPragmaPlugin())  # pragma: no cover
