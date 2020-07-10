@@ -1,0 +1,6 @@
+include __pkginfo__.py
+include LICENSE
+include requirements.txt
+recursive-exclude **/__pycache__ *
+recursive-include coverage_pyver_pragma/ *.pyi
+include coverage_pyver_pragma/py.typed
