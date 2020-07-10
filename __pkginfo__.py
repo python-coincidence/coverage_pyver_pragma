@@ -53,7 +53,7 @@ entry_points = {
 		"console_scripts": []
 		}
 
-__license__ = "LGPLV3+"
+__license__ = "GNU Lesser General Public License v3 or later (LGPLv3+)"
 
 short_desc = "Plugin for Coverage.py to selectively ignore branches depending on the Python version."
 
@@ -83,6 +83,7 @@ extras_require = {'all': []}
 classifiers = [
 		'Development Status :: 4 - Beta',
 		'Intended Audience :: Developers',
+		'License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)',
 		'Operating System :: OS Independent',
 		'Programming Language :: Python',
 		'Programming Language :: Python :: 3 :: Only',
