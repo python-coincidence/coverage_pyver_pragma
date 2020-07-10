@@ -81,11 +81,17 @@ def test_correct_version_regex():
 
 		regexes = make_regexes(python_version)
 
+		versions_list = [
+				range(0, python_version.minor),
+				range(python_version.minor + 1, 10),
+				range(0, python_version.minor + 1),
+				range(python_version.minor, 10),
+				[python_version.minor],
+				[python_version.minor],
+				]
+
 		# TODO: Plus
-		for pre_version_sign, minor_versions in zip(
-			['>', '<', ">=", "<=", ''],
-			[range(0, python_version.minor), range(python_version.minor + 1, 10), range(0, python_version.minor + 1), range(python_version.minor, 10), [python_version.minor], [python_version.minor]]
-			):
+		for pre_version_sign, minor_versions in zip(['>', '<', ">=", "<=", ''], versions_list):
 			for minor_version in minor_versions:
 				version = 30 + minor_version
 
@@ -111,14 +117,35 @@ def test_correct_version_regex():
 	print(f"Ran {counter} tests")
 
 
-class MockConfig:
-
-	def __init__(self):
-		self.exclude_list = [regex_main]
-
-
-def test_plugin():
-	mock_config = MockConfig()
-	PyVerPragmaPlugin().configure(mock_config)
-
-	assert mock_config.exclude_list == [p.pattern for p in make_regexes(sys.version_info)] + [not_version_regex]
+@pytest.mark.parametrize(
+		"version_tuple",
+		[
+				Version(1, 0),
+				Version(1, 1),
+				Version(1, 2),
+				Version(1, 3),
+				Version(1, 4),
+				Version(1, 6),
+				Version(2, 0),
+				Version(2, 1),
+				Version(2, 2),
+				Version(2, 3),
+				Version(2, 4),
+				Version(2, 5),
+				Version(2, 6),
+				Version(2, 7),
+				Version(4, 0),
+				Version(4, 1),
+				Version(4, 2),
+				Version(4, 3),
+				Version(4, 4),
+				Version(4, 5),
+				Version(4, 6),
+				Version(4, 7),
+				Version(4, 8),
+				Version(4, 9),
+				]
+		)
+def test_invalid_versions(version_tuple):
+	with pytest.raises(ValueError):
+		make_regexes(version_tuple)
