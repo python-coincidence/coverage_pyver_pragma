@@ -40,7 +40,7 @@ jobs:
         provider: pypi
         user: "DomDF"
         password:
-          secure:
+          secure: sGd114z7Kx0MLr1BtZXjE24a8SHUrPxNFSsLUcBtqqUU2xYYQDE9oDRnkmw1lJjW8pViT6TlDSP7e1kQ/3Oqwgi/lRTkrROeULRL2ZmKzsd4uPoEYzFk9Xuk4GWHP6kJspH53HnKcne2zk4Q0ORuSdRAI3VkkSdBtEgZG6k34Qx6j6VLm1Vombszns/uHm7+AWHUKlPKOfONTtKzuyUU4OVDfymSIANpnYLRAuJXRcIdmJuhAzEcCFWa1RCbtHQ2ACb/aSyI1YikNL8tGGPO/PRj8cxwMsfLr5KHfK/fKurvjVDT69/0VkB9E/zHmRLlZSBb/gaZfyyUsj9skkPI3brnDdve+3PFmd/X1fyCwkk7+jTakruHXtckEV9o/ubeRNEIvi3jY/V2jTTYh1sOlU6KLJ0xI45Aa7sRDTAvv0ldpR4LvoCbIL5p7gAgrhzmI0ibY3J+WtoVqIhTxddEFtVpYWgV0/Y1osv+QyS+DeiRzJ/E9NccuS658TIF8WjigEXupmAY7gytdf3IAKUMAJW7JbxjN+fnxhhyADPz+FdMrKDWI8N9+jXZkAHgS3qEYxRRwzpjXJrxkdXAIOhOUWl2Mu+eO7RD+O9S4WBZFADw/VmPV8BPv5nDhtJNYI+GN92eV4bg/bibDDelTChFIvYqGNsOZfLgTxxNicaezTU=
         distributions: "sdist bdist_wheel"
         skip_existing: true
     - stage: deploy_conda
