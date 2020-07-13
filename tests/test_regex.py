@@ -63,27 +63,30 @@ class Version(NamedTuple):
 
 @pytest.mark.parametrize("current_platform", ["Windows", "Darwin", "Linux"])
 @pytest.mark.parametrize("current_implementation", ["CPython", "Jython", "IronPython", "PyPy"])
-@pytest.mark.parametrize("python_version", [
-		Version(3, 0),
-		Version(3, 1),
-		Version(3, 2),
-		Version(3, 3),
-		Version(3, 4),
-		Version(3, 5),
-		Version(3, 6),
-		Version(3, 7),
-		Version(3, 8),
-		Version(3, 9)
-		])
+@pytest.mark.parametrize(
+		"python_version",
+		[
+				Version(3, 0),
+				Version(3, 1),
+				Version(3, 2),
+				Version(3, 3),
+				Version(3, 4),
+				Version(3, 5),
+				Version(3, 6),
+				Version(3, 7),
+				Version(3, 8),
+				Version(3, 9)
+				]
+		)
 def test_platforms_regex_values(current_platform, current_implementation, python_version):
 	post_version_sign = ''
 	comment_string = "# "
 	pragma_string = "pragma"
-	post_pragma_space = " "
+	post_pragma_space = ' '
 	no_string = "NO"
 	post_no_space = ''
 	cover_string = "cover"
-	post_cover_space = " "
+	post_cover_space = ' '
 
 	regexes = make_regexes(python_version, current_platform, current_implementation)
 
@@ -97,7 +100,9 @@ def test_platforms_regex_values(current_platform, current_implementation, python
 			]
 
 	ignore_platforms = [f" !{x}" for x in ["Windows", "Darwin", "Linux"] if x != current_platform] + ['']
-	ignore_implementations = [f" !{x}" for x in ["CPython", "Jython", "IronPython", "PyPy"] if x != current_implementation] + ['']
+	ignore_implementations = [
+			f" !{x}" for x in ["CPython", "Jython", "IronPython", "PyPy"] if x != current_implementation
+			] + ['']
 	counter = 1
 
 	for pre_version_sign, minor_versions in zip(['>', '<', ">=", "<=", ''], versions_list):
@@ -109,14 +114,11 @@ def test_platforms_regex_values(current_platform, current_implementation, python
 					for plat in ignore_platforms:
 
 						test_string = f"{comment_string}{pragma_string}{post_pragma_space}{no_string}{post_no_space}{cover_string}{post_cover_space}({pre_version_sign}{py_string}{version}{post_version_sign}{plat}{impl})"
-						print(".", end='')
+						print('.', end='')
 						sys.stdout.flush()
 						# print(f"[{counter} TESTING: {test_string}]")
 
-						if not any([
-								re.match(pattern.pattern, test_string)
-								for pattern in regexes
-								]):
+						if not any([re.match(pattern.pattern, test_string) for pattern in regexes]):
 							raise AssertionError(f"[{counter} FAIL: {test_string}]")
 
 						counter += 1
@@ -126,18 +128,22 @@ def test_platforms_regex_values(current_platform, current_implementation, python
 
 @pytest.mark.parametrize("current_platform", ["Linux"])
 @pytest.mark.parametrize("current_implementation", ["CPython"])
-@pytest.mark.parametrize("python_version", [
-		Version(3, 6),
-		Version(3, 7),
-		Version(3, 8),
-		Version(3, 9)
-		])
+@pytest.mark.parametrize("python_version", [Version(3, 6), Version(3, 7), Version(3, 8), Version(3, 9)])
 @pytest.mark.parametrize("no_string", ["no", "NO"])
 @pytest.mark.parametrize("space", ['', ' ', '\t', "  "])
 @pytest.mark.parametrize("cover_string", ["cover", "COVER"])
 @pytest.mark.parametrize("py_string", ["Py", "PY", "py"])
 @pytest.mark.parametrize("pragma_string", ["pragma", "PRAGMA"])
-def test_platforms_regex_structure(current_platform, current_implementation, python_version, no_string ,space, cover_string, py_string, pragma_string):
+def test_platforms_regex_structure(
+		current_platform,
+		current_implementation,
+		python_version,
+		no_string,
+		space,
+		cover_string,
+		py_string,
+		pragma_string
+		):
 	post_version_sign = ''
 
 	regexes = make_regexes(python_version, current_platform, current_implementation)
@@ -152,7 +158,9 @@ def test_platforms_regex_structure(current_platform, current_implementation, pyt
 			]
 
 	ignore_platforms = [f" !{x}" for x in ["Windows", "Darwin", "Linux"] if x != current_platform] + ['']
-	ignore_implementations = [f" !{x}" for x in ["CPython", "Jython", "IronPython", "PyPy"] if x != current_implementation] + ['']
+	ignore_implementations = [
+			f" !{x}" for x in ["CPython", "Jython", "IronPython", "PyPy"] if x != current_implementation
+			] + ['']
 	counter = 1
 
 	for pre_version_sign, minor_versions in zip(['>', '<', ">=", "<=", ''], versions_list):
@@ -164,14 +172,11 @@ def test_platforms_regex_structure(current_platform, current_implementation, pyt
 					for plat in ignore_platforms:
 
 						test_string = f"#{space}{pragma_string}:{space}{no_string}{space}{cover_string}{space}({pre_version_sign}{py_string}{version}{post_version_sign}{plat}{impl})"
-						print(".", end='')
+						print('.', end='')
 						sys.stdout.flush()
 						# print(f"[{counter} TESTING: {test_string}]")
 
-						if not any([
-								re.match(pattern.pattern, test_string)
-								for pattern in regexes
-								]):
+						if not any([re.match(pattern.pattern, test_string) for pattern in regexes]):
 							raise AssertionError(f"[{counter} FAIL: {test_string}]")
 
 						counter += 1
@@ -190,7 +195,19 @@ def test_platforms_regex_structure(current_platform, current_implementation, pyt
 @pytest.mark.parametrize("py_string", ["PY"])
 @pytest.mark.parametrize("pragma_string", ["pragma"])
 @pytest.mark.parametrize("comment_string", ['#', "# ", "#  ", "#\t", "# \t", "# \t ", "#\t "])
-def test_platforms_regex_spaces(current_platform, current_implementation, python_version, post_pragma_space, no_string ,post_no_space, cover_string, post_cover_space, py_string, pragma_string, comment_string):
+def test_platforms_regex_spaces(
+		current_platform,
+		current_implementation,
+		python_version,
+		post_pragma_space,
+		no_string,
+		post_no_space,
+		cover_string,
+		post_cover_space,
+		py_string,
+		pragma_string,
+		comment_string
+		):
 	post_version_sign = ''
 
 	regexes = make_regexes(python_version, current_platform, current_implementation)
@@ -205,7 +222,9 @@ def test_platforms_regex_spaces(current_platform, current_implementation, python
 			]
 
 	ignore_platforms = [f" !{x}" for x in ["Windows", "Darwin", "Linux"] if x != current_platform] + ['']
-	ignore_implementations = [f" !{x}" for x in ["CPython", "Jython", "IronPython", "PyPy"] if x != current_implementation] + ['']
+	ignore_implementations = [
+			f" !{x}" for x in ["CPython", "Jython", "IronPython", "PyPy"] if x != current_implementation
+			] + ['']
 	counter = 1
 
 	for pre_version_sign, minor_versions in zip(['>', '<', ">=", "<=", ''], versions_list):
@@ -217,14 +236,11 @@ def test_platforms_regex_spaces(current_platform, current_implementation, python
 					for plat in ignore_platforms:
 
 						test_string = f"{comment_string}{pragma_string}{post_pragma_space}{no_string}{post_no_space}{cover_string}{post_cover_space}({pre_version_sign}{py_string}{version}{post_version_sign}{plat}{impl})"
-						print(".", end='')
+						print('.', end='')
 						sys.stdout.flush()
 						# print(f"[{counter} TESTING: {test_string}]")
 
-						if not any([
-								re.match(pattern.pattern, test_string)
-								for pattern in regexes
-								]):
+						if not any([re.match(pattern.pattern, test_string) for pattern in regexes]):
 							raise AssertionError(f"[{counter} FAIL: {test_string}]")
 
 						counter += 1
@@ -291,7 +307,7 @@ def test_platforms_regex_spaces(current_platform, current_implementation, python
 # 											for plat in ignore_platforms:
 #
 # 												test_string = f"{comment_string}{pragma_string}{post_pragma_space}{no_string}{post_no_space}{cover_string}{post_cover_space}({pre_version_sign}{py_string}{version}{post_version_sign}{plat}{impl})"
-# 												print(".", end='')
+# 												print('.', end='')
 # 												sys.stdout.flush()
 # 												# print(f"[{counter} TESTING: {test_string}]")
 #

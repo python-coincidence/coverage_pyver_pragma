@@ -62,4 +62,3 @@ These can also be combined with the Python version:
 .. code-block:: python
 
 	# pragma: no cover (<=py36 !Windows !CPython)
-
