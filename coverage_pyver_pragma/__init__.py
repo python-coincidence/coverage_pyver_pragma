@@ -25,6 +25,7 @@ Plugin for Coverage.py to selectively ignore branches depending on the Python ve
 #
 
 # stdlib
+import platform
 import re
 import sys
 from typing import TYPE_CHECKING, Any, List, NamedTuple, Pattern, Union
@@ -35,7 +36,7 @@ import coverage  # type: ignore
 if TYPE_CHECKING:
 
 	# stdlib
-	from sys import _version_info as VersionInfo
+	from sys import _version_info as VersionInfo  # pragma: no cover (typing only)
 
 __author__: str = "Dominic Davis-Foster"
 __copyright__: str = "2020 Dominic Davis-Foster"
@@ -65,12 +66,16 @@ class Version(NamedTuple):
 	serial: str
 
 
-def make_regexes(version_tuple: Union["Version", "VersionInfo"]) -> List[Pattern]:
+def make_regexes(version_tuple: Union["Version", "VersionInfo"], current_platform: str, current_implementation: str) -> List[Pattern]:
 	"""
 	Generate a list of regular expressions to match all valid ignores for the given Python version.
 
 	:param version_tuple: The Python version.
 	:type version_tuple: :class:`~typing.NamedTuple` with the attributes ``major`` and ``minor``.
+	:param current_platform:
+	:type current_platform: str
+	:param current_implementation:
+	:type current_implementation: str
 
 	:return: List of regular expressions.
 	"""
@@ -84,15 +89,19 @@ def make_regexes(version_tuple: Union["Version", "VersionInfo"]) -> List[Pattern
 		less_equal_versions = [str(version_tuple.minor), *less_than_versions]
 		exact_versions = [str(version_tuple.minor)]
 
+		wrong_platforms_string = fr"(?!.*!{current_platform})"  # (?!.*Windows)(?!.*Darwin)
+		wrong_implementations_string = fr"(?!.*!{current_implementation})"  # (?!.*Windows)(?!.*Darwin)
+		# correct_platforms_string = r"(?=\s*(Linux)?)"
+
 		# Add regular expressions for relevant python versions
 		# We do it with re.compile to get the syntax highlighting in PyCharm
 		excludes = [
-				re.compile(fr"{regex_main}\s*\(<(py|PY|Py)3({'|'.join(less_than_versions)})\)"),
-				re.compile(fr"{regex_main}\s*\(<=(py|PY|Py)3({'|'.join(less_equal_versions)})\)"),
-				re.compile(fr"{regex_main}\s*\(>(py|PY|Py)3({'|'.join(greater_than_versions)})\)"),
-				re.compile(fr"{regex_main}\s*\((py|PY|Py)3({'|'.join(greater_than_versions)})\+\)"),
-				re.compile(fr"{regex_main}\s*\(>=(py|PY|Py)3({'|'.join(greater_equal_versions)})\)"),
-				re.compile(fr"{regex_main}\s*\((py|PY|Py)3({'|'.join(exact_versions)})\)"),
+				re.compile(fr"{regex_main}\s*\((?=\s*<(py|PY|Py)3({'|'.join(less_than_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"),
+				re.compile(fr"{regex_main}\s*\((?=\s*<=(py|PY|Py)3({'|'.join(less_equal_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"),
+				re.compile(fr"{regex_main}\s*\((?=\s*>(py|PY|Py)3({'|'.join(greater_than_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"),
+				re.compile(fr"{regex_main}\s*\((?=\s*(py|PY|Py)3({'|'.join(greater_equal_versions)})\+){wrong_platforms_string}{wrong_implementations_string}.*\)"),
+				re.compile(fr"{regex_main}\s*\((?=\s*>=(py|PY|Py)3({'|'.join(greater_equal_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"),
+				re.compile(fr"{regex_main}\s*\((?=\s*(py|PY|Py)3({'|'.join(exact_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"),
 				]
 
 		return excludes
@@ -120,7 +129,7 @@ class PyVerPragmaPlugin(coverage.CoveragePlugin):
 		# Remove standard "pragma: no cover" regex
 		config.exclude_list.remove(regex_main)
 
-		excludes = make_regexes(sys.version_info)
+		excludes = make_regexes(sys.version_info, platform.system(), platform.python_implementation())
 		for exc_pattern in excludes:
 			config.exclude_list.append(exc_pattern.pattern)
 
