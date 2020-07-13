@@ -43,7 +43,7 @@ __copyright__ = """
 2020 Dominic Davis-Foster <dominic@davis-foster.co.uk>
 """
 
-__version__ = "0.1.1"
+__version__ = "0.0.0"
 
 modname = "coverage_pyver_pragma"
 pypi_name = "coverage_pyver_pragma"
@@ -70,7 +70,7 @@ project_urls = {
 repo_root = pathlib.Path(__file__).parent
 
 # Get info from files; set: long_description
-long_description = (repo_root / "README.rst").read_text(encoding="utf-8").replace("0.1.1", __version__) + '\n'
+long_description = (repo_root / "README.rst").read_text(encoding="utf-8").replace("0.0.0", __version__) + '\n'
 conda_description = """Plugin for Coverage.py to selectively ignore branches depending on the Python version.
 
 
