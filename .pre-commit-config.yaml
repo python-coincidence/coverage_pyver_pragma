@@ -35,6 +35,7 @@ repos:
    rev: v0.30.0
    hooks:
     - id: yapf
+      exclude: ^(conf\.py|)$
 
 
  - repo: https://github.com/Lucas-C/pre-commit-hooks

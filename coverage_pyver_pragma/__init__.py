@@ -66,7 +66,11 @@ class Version(NamedTuple):
 	serial: str
 
 
-def make_regexes(version_tuple: Union["Version", "VersionInfo"], current_platform: str, current_implementation: str) -> List[Pattern]:
+def make_regexes(
+		version_tuple: Union["Version", "VersionInfo"],
+		current_platform: str,
+		current_implementation: str,
+		) -> List[Pattern]:
 	"""
 	Generate a list of regular expressions to match all valid ignores for the given Python version.
 
@@ -96,12 +100,24 @@ def make_regexes(version_tuple: Union["Version", "VersionInfo"], current_platfor
 		# Add regular expressions for relevant python versions
 		# We do it with re.compile to get the syntax highlighting in PyCharm
 		excludes = [
-				re.compile(fr"{regex_main}\s*\((?=\s*<(py|PY|Py)3({'|'.join(less_than_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"),
-				re.compile(fr"{regex_main}\s*\((?=\s*<=(py|PY|Py)3({'|'.join(less_equal_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"),
-				re.compile(fr"{regex_main}\s*\((?=\s*>(py|PY|Py)3({'|'.join(greater_than_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"),
-				re.compile(fr"{regex_main}\s*\((?=\s*(py|PY|Py)3({'|'.join(greater_equal_versions)})\+){wrong_platforms_string}{wrong_implementations_string}.*\)"),
-				re.compile(fr"{regex_main}\s*\((?=\s*>=(py|PY|Py)3({'|'.join(greater_equal_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"),
-				re.compile(fr"{regex_main}\s*\((?=\s*(py|PY|Py)3({'|'.join(exact_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"),
+				re.compile(
+						fr"{regex_main}\s*\((?=\s*<(py|PY|Py)3({'|'.join(less_than_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"
+						),
+				re.compile(
+						fr"{regex_main}\s*\((?=\s*<=(py|PY|Py)3({'|'.join(less_equal_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"
+						),
+				re.compile(
+						fr"{regex_main}\s*\((?=\s*>(py|PY|Py)3({'|'.join(greater_than_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"
+						),
+				re.compile(
+						fr"{regex_main}\s*\((?=\s*(py|PY|Py)3({'|'.join(greater_equal_versions)})\+){wrong_platforms_string}{wrong_implementations_string}.*\)"
+						),
+				re.compile(
+						fr"{regex_main}\s*\((?=\s*>=(py|PY|Py)3({'|'.join(greater_equal_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"
+						),
+				re.compile(
+						fr"{regex_main}\s*\((?=\s*(py|PY|Py)3({'|'.join(exact_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"
+						),
 				]
 
 		return excludes
