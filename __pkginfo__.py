@@ -19,8 +19,6 @@ __all__ = [
 		"__version__",
 		"modname",
 		"pypi_name",
-		"py_modules",
-		"entry_points",
 		"__license__",
 		"__author__",
 		"short_desc",
@@ -29,13 +27,11 @@ __all__ = [
 		"github_username",
 		"web",
 		"github_url",
-		"project_urls",
 		"repo_root",
-		"long_description",
 		"install_requires",
 		"extras_require",
-		"classifiers",
-		"keywords",
+		"project_urls",
+
 		"import_name",
 		]
 
@@ -44,59 +40,30 @@ __copyright__ = """
 """
 
 __version__ = "0.0.1"
-
 modname = "coverage_pyver_pragma"
 pypi_name = "coverage_pyver_pragma"
 import_name = "coverage_pyver_pragma"
-py_modules = []
-entry_points = {
-		"console_scripts": [],
-		}
-
 __license__ = "GNU Lesser General Public License v3 or later (LGPLv3+)"
-
 short_desc = "Plugin for Coverage.py to selectively ignore branches depending on the Python version."
-
 __author__ = author = "Dominic Davis-Foster"
 author_email = "dominic@davis-foster.co.uk"
 github_username = "domdfcoding"
-web = github_url = f"https://github.com/domdfcoding/coverage_pyver_pragma"
-project_urls = {
-		"Documentation": f"https://coverage_pyver_pragma.readthedocs.io",
-		"Issue Tracker": f"{github_url}/issues",
-		"Source Code": github_url,
-		}
-
+web = github_url = "https://github.com/domdfcoding/coverage_pyver_pragma"
 repo_root = pathlib.Path(__file__).parent
+install_requires = (repo_root / "requirements.txt").read_text(encoding="utf-8").split('\n')
+extras_require = {'all': []}
 
-# Get info from files; set: long_description
-long_description = (repo_root / "README.rst").read_text(encoding="utf-8").replace("0.0.1", __version__) + '\n'
+
+
 conda_description = """Plugin for Coverage.py to selectively ignore branches depending on the Python version.
 
 
 Before installing please ensure you have added the following channels: domdfcoding, conda-forge"""
 __all__.append("conda_description")
 
-install_requires = (repo_root / "requirements.txt").read_text(encoding="utf-8").split('\n')
-extras_require = {'all': []}
 
-classifiers = [
-		'Development Status :: 4 - Beta',
-		'Intended Audience :: Developers',
-		'License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)',
-		'Operating System :: OS Independent',
-		'Programming Language :: Python',
-		'Programming Language :: Python :: 3 :: Only',
-		'Programming Language :: Python :: 3.6',
-		'Programming Language :: Python :: 3.7',
-		'Programming Language :: Python :: 3.8',
-		'Programming Language :: Python :: 3.9',
-		'Programming Language :: Python :: Implementation :: CPython',
-		'Programming Language :: Python :: Implementation :: PyPy',
-		'Topic :: Software Development :: Libraries :: Python Modules',
-		'Topic :: Utilities',
-		'Typing :: Typed',
-
-		]
-
-keywords = ""
+project_urls = {
+		"Documentation": "https://coverage_pyver_pragma.readthedocs.io",
+		"Issue Tracker": f"{github_url}/issues",
+		"Source Code": github_url,
+		}
