@@ -166,20 +166,19 @@ def test_platforms_regex_structure(
 	for pre_version_sign, minor_versions in zip(['>', '<', ">=", "<=", ''], versions_list):
 		for minor_version in minor_versions:
 			version = 30 + minor_version
-			for py_string in ["Py", "PY", "py"]:
-				for impl in ignore_implementations:
-					# for post_version_sign in ['+', '']:
-					for plat in ignore_platforms:
+			for impl in ignore_implementations:
+				# for post_version_sign in ['+', '']:
+				for plat in ignore_platforms:
 
-						test_string = f"#{space}{pragma_string}:{space}{no_string}{space}{cover_string}{space}({pre_version_sign}{py_string}{version}{post_version_sign}{plat}{impl})"
-						print('.', end='')
-						sys.stdout.flush()
-						# print(f"[{counter} TESTING: {test_string}]")
+					test_string = f"#{space}{pragma_string}:{space}{no_string}{space}{cover_string}{space}({pre_version_sign}{py_string}{version}{post_version_sign}{plat}{impl})"
+					print('.', end='')
+					sys.stdout.flush()
+					# print(f"[{counter} TESTING: {test_string}]")
 
-						if not any([re.match(pattern.pattern, test_string) for pattern in regexes]):
-							raise AssertionError(f"[{counter} FAIL: {test_string}]")
+					if not any([re.match(pattern.pattern, test_string) for pattern in regexes]):
+						raise AssertionError(f"[{counter} FAIL: {test_string}]")
 
-						counter += 1
+					counter += 1
 
 	print(f"Ran {counter} tests")
 
@@ -230,20 +229,19 @@ def test_platforms_regex_spaces(
 	for pre_version_sign, minor_versions in zip(['>', '<', ">=", "<=", ''], versions_list):
 		for minor_version in minor_versions:
 			version = 30 + minor_version
-			for py_string in ["Py", "PY", "py"]:
-				for impl in ignore_implementations:
-					# for post_version_sign in ['+', '']:
-					for plat in ignore_platforms:
+			for impl in ignore_implementations:
+				# for post_version_sign in ['+', '']:
+				for plat in ignore_platforms:
 
-						test_string = f"{comment_string}{pragma_string}{post_pragma_space}{no_string}{post_no_space}{cover_string}{post_cover_space}({pre_version_sign}{py_string}{version}{post_version_sign}{plat}{impl})"
-						print('.', end='')
-						sys.stdout.flush()
-						# print(f"[{counter} TESTING: {test_string}]")
+					test_string = f"{comment_string}{pragma_string}{post_pragma_space}{no_string}{post_no_space}{cover_string}{post_cover_space}({pre_version_sign}{py_string}{version}{post_version_sign}{plat}{impl})"
+					print('.', end='')
+					sys.stdout.flush()
+					# print(f"[{counter} TESTING: {test_string}]")
 
-						if not any([re.match(pattern.pattern, test_string) for pattern in regexes]):
-							raise AssertionError(f"[{counter} FAIL: {test_string}]")
+					if not any([re.match(pattern.pattern, test_string) for pattern in regexes]):
+						raise AssertionError(f"[{counter} FAIL: {test_string}]")
 
-						counter += 1
+					counter += 1
 
 	print(f"Ran {counter} tests")
 
