@@ -118,9 +118,7 @@ def make_regexes(
 				re.compile(
 						fr"{regex_main}\s*\((?=\s*(py|PY|Py)3({'|'.join(exact_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"
 						),
-				re.compile(
-						fr"{regex_main}\s*\({wrong_platforms_string}{wrong_implementations_string}.*\)"
-						),
+				re.compile(fr"{regex_main}\s*\({wrong_platforms_string}{wrong_implementations_string}.*\)"),
 				]
 
 		print(excludes)
@@ -156,7 +154,11 @@ class PyVerPragmaPlugin(coverage.CoveragePlugin):
 		# print(config.exclude_list)
 
 		# Reinstate the general regex, but making sure it isn't followed by a left bracket.
-		config.exclude_list.append(re.compile(fr"{regex_main} (?!\(.*(.{{0,2}}(py|PY|Py)3\d(\+)?|!{platform.system()}|!{platform.python_implementation()}).*\)).*$").pattern)
+		config.exclude_list.append(
+				re.compile(
+						fr"{regex_main} (?!\(.*(.{{0,2}}(py|PY|Py)3\d(\+)?|!{platform.system()}|!{platform.python_implementation()}).*\)).*$"
+						).pattern
+				)
 
 		# TODO: Python 4.X
 

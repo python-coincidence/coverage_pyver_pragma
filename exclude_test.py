@@ -1,5 +1,6 @@
 # This file serves as a visual test that the conditional excludes are working correctly.
 
+# stdlib
 import sys
 
 print("This line should be excluded on Windows")  # pragma: no cover (!Linux !Darwin)
