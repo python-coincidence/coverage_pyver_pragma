@@ -153,7 +153,9 @@ class PyVerPragmaPlugin(coverage.CoveragePlugin):
 		# print(config.exclude_list)
 
 		# Reinstate the general regex, but making sure it isn't followed by a left bracket.
-		config.exclude_list.append(make_not_exclude_regex(platform.system(), platform.python_implementation()).pattern)
+		config.exclude_list.append(
+				make_not_exclude_regex(platform.system(), platform.python_implementation()).pattern
+				)
 
 		# TODO: Python 4.X
 
@@ -164,8 +166,8 @@ def make_not_exclude_regex(
 		) -> Pattern:
 
 	return re.compile(
-						fr"{regex_main} (?!\(.*(.{{0,2}}(py|PY|Py)3\d(\+)?|!{current_platform}|!{current_implementation}).*\)).*$"
-						)
+			fr"{regex_main} (?!\(.*(.{{0,2}}(py|PY|Py)3\d(\+)?|!{current_platform}|!{current_implementation}).*\)).*$"
+			)
 
 
 def coverage_init(reg, options):

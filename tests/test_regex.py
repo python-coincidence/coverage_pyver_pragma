@@ -23,7 +23,8 @@ def test_not_version_regex():
 				for no_string in ["no", "NO"]:
 					for post_no_space in ['', ' ', "\t", "  "]:
 						for cover_string in ["cover", "COVER"]:
-							for post_cover_space in [' ']:  # ['', ' ', "\t", "  "]:  # TODO: This regex is picky about the space here
+							for post_cover_space in [' ']:
+								# ['', ' ', "\t", "  "]:  # TODO: This regex is picky about the space here
 								for pre_version_sign in ['>', '<', ">=", "<=", '']:
 									for py_string in ["Py", "PY", "py"]:
 										for version in [30, 31, 32, 33, 34, 35, 36, 37, 38, 39]:
@@ -43,7 +44,8 @@ def test_not_version_regex():
 				for no_string in ["no", "NO"]:
 					for post_no_space in ['', ' ', "\t", "  "]:
 						for cover_string in ["cover", "COVER"]:
-							for post_cover_space in [' ']:  # ['', ' ', "\t", "  "]:  # TODO: This regex is picky about the space here
+							for post_cover_space in [' ']:
+								# ['', ' ', "\t", "  "]:  # TODO: This regex is picky about the space here
 								for post_cover_text in ['', "abcdefg", "hello world"]:
 									test_string = f"{comment_string}{pragma_string}{post_pragma_space}{no_string}{post_no_space}{cover_string}{post_cover_space}{post_cover_text}"
 									# print(f"[{counter} TESTING: {test_string}]")
