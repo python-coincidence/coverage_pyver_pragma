@@ -7,12 +7,12 @@ from typing import NamedTuple
 import pytest
 
 # this package
-from coverage_pyver_pragma import make_not_exclude_regex, make_regexes
+from coverage_pyver_pragma import make_not_exclude_regexs, make_regexes
 
 
 def test_not_version_regex():
 
-	not_version_regex = make_not_exclude_regex("Linux", "CPython").pattern
+	not_version_regex = make_not_exclude_regexs("Linux", "CPython")[0].pattern
 	print(not_version_regex)
 
 	counter = 1
@@ -37,7 +37,6 @@ def test_not_version_regex():
 													raise AssertionError(f"[{counter} FAIL: {test_string}]")
 												counter += 1
 
-	# TODO Regex for # pragma: no cover etc with nothing after it
 	for comment_string in ['#', "# ", "#  ", "#\t", "# \t", "# \t ", "#\t "]:
 		for pragma_string in ["pragma", "PRAGMA"]:
 			for post_pragma_space in ['', ':', ": ", ":\t", "  "]:
@@ -46,7 +45,25 @@ def test_not_version_regex():
 						for cover_string in ["cover", "COVER"]:
 							for post_cover_space in [' ']:
 								# ['', ' ', "\t", "  "]:  # TODO: This regex is picky about the space here
-								for post_cover_text in ['', "abcdefg", "hello world"]:
+								for post_cover_text in ["abcdefg", "hello world"]:
+									test_string = f"{comment_string}{pragma_string}{post_pragma_space}{no_string}{post_no_space}{cover_string}{post_cover_space}{post_cover_text}"
+									# print(f"[{counter} TESTING: {test_string}]")
+
+									if re.match(not_version_regex, test_string) is None:
+										raise AssertionError(f"[{counter} FAIL: {test_string}]")
+									counter += 1
+
+	not_version_regex = make_not_exclude_regexs("Linux", "CPython")[1].pattern
+	print(not_version_regex)
+
+	for comment_string in ['#', "# ", "#  ", "#\t", "# \t", "# \t ", "#\t "]:
+		for pragma_string in ["pragma", "PRAGMA"]:
+			for post_pragma_space in ['', ':', ": ", ":\t", "  "]:
+				for no_string in ["no", "NO"]:
+					for post_no_space in ['', ' ', "\t", "  "]:
+						for cover_string in ["cover", "COVER"]:
+							for post_cover_space in ['']:
+								for post_cover_text in ['']:
 									test_string = f"{comment_string}{pragma_string}{post_pragma_space}{no_string}{post_no_space}{cover_string}{post_cover_space}{post_cover_text}"
 									# print(f"[{counter} TESTING: {test_string}]")
 

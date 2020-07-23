@@ -3,7 +3,7 @@ import platform
 import sys
 
 # this package
-from coverage_pyver_pragma import PyVerPragmaPlugin, make_not_exclude_regex, make_regexes, regex_main
+from coverage_pyver_pragma import PyVerPragmaPlugin, make_not_exclude_regexs, make_regexes, regex_main
 
 
 class MockConfig:
@@ -18,4 +18,4 @@ def test_plugin():
 
 	assert mock_config.exclude_list == [
 			p.pattern for p in make_regexes(sys.version_info, platform.system(), platform.python_implementation())
-			] + [make_not_exclude_regex(platform.system(), platform.python_implementation()).pattern]
+			] + [p.pattern for p in make_not_exclude_regexs(platform.system(), platform.python_implementation())]
