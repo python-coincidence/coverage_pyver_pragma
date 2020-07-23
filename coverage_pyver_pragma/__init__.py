@@ -46,7 +46,6 @@ __version__: str = "0.0.1"
 __email__: str = "dominic@davis-foster.co.uk"
 
 regex_main: str = re.compile(r"#\s*(pragma|PRAGMA)[:\s]?\s*(no|NO)\s*(cover|COVER)").pattern
-not_version_regex: str = re.compile(fr"{regex_main}\s*((?!\(.{{0,2}}(py|PY|Py)3\d(\+)?\)).)*$").pattern
 
 
 class Version(NamedTuple):
@@ -154,13 +153,19 @@ class PyVerPragmaPlugin(coverage.CoveragePlugin):
 		# print(config.exclude_list)
 
 		# Reinstate the general regex, but making sure it isn't followed by a left bracket.
-		config.exclude_list.append(
-				re.compile(
-						fr"{regex_main} (?!\(.*(.{{0,2}}(py|PY|Py)3\d(\+)?|!{platform.system()}|!{platform.python_implementation()}).*\)).*$"
-						).pattern
-				)
+		config.exclude_list.append(make_not_exclude_regex(platform.system(), platform.python_implementation()).pattern)
 
 		# TODO: Python 4.X
+
+
+def make_not_exclude_regex(
+		current_platform: str,
+		current_implementation: str,
+		) -> Pattern:
+
+	return re.compile(
+						fr"{regex_main} (?!\(.*(.{{0,2}}(py|PY|Py)3\d(\+)?|!{current_platform}|!{current_implementation}).*\)).*$"
+						)
 
 
 def coverage_init(reg, options):
