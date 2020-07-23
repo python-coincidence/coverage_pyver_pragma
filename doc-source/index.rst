@@ -154,8 +154,8 @@ Installation
 
 	usage
 	API Reference<docs>
+	contributing
 	Source
-	Building
 
 .. start links
 
