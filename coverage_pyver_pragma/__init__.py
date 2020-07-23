@@ -90,7 +90,7 @@ def make_regexes(
 		greater_equal_versions = [*greater_than_versions, str(version_tuple.minor)]
 		less_than_versions = [str(x) for x in range(version_tuple.minor + 1, 10)]
 		# Current max Python version is 3.9
-		less_equal_versions = [str(version_tuple.minor), *less_than_versions]
+		less_equal_versions = [str(version_tuple.minor), *less_than_versions]  # pragma: no cover (!Linux)
 		exact_versions = [str(version_tuple.minor)]
 
 		wrong_platforms_string = fr"(?!.*!{current_platform})"  # (?!.*Windows)(?!.*Darwin)
@@ -118,8 +118,12 @@ def make_regexes(
 				re.compile(
 						fr"{regex_main}\s*\((?=\s*(py|PY|Py)3({'|'.join(exact_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"
 						),
+				re.compile(
+						fr"{regex_main}\s*\({wrong_platforms_string}{wrong_implementations_string}.*\)"
+						),
 				]
 
+		print(excludes)
 		return excludes
 
 	else:
@@ -152,7 +156,7 @@ class PyVerPragmaPlugin(coverage.CoveragePlugin):
 		# print(config.exclude_list)
 
 		# Reinstate the general regex, but making sure it isn't followed by a left bracket.
-		config.exclude_list.append(not_version_regex)
+		config.exclude_list.append(re.compile(fr"{regex_main} (?!\(.*(.{{0,2}}(py|PY|Py)3\d(\+)?|!{platform.system()}|!{platform.python_implementation()}).*\)).*$").pattern)
 
 		# TODO: Python 4.X
 
