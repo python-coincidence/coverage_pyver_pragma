@@ -39,7 +39,7 @@ __copyright__ = """
 2020 Dominic Davis-Foster <dominic@davis-foster.co.uk>
 """
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 modname = "coverage_pyver_pragma"
 pypi_name = "coverage_pyver_pragma"
 import_name = "coverage_pyver_pragma"

@@ -90,7 +90,7 @@ coverage_pyver_pragma
 .. |language| image:: https://img.shields.io/github/languages/top/domdfcoding/coverage_pyver_pragma
 	:alt: GitHub top language
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/domdfcoding/coverage_pyver_pragma/v0.0.2
+.. |commits-since| image:: https://img.shields.io/github/commits-since/domdfcoding/coverage_pyver_pragma/v0.0.3
 	:target: https://github.com/domdfcoding/coverage_pyver_pragma/pulse
 	:alt: GitHub commits since tagged version
 
