@@ -120,7 +120,7 @@ def make_regexes(
 				re.compile(fr"{regex_main}\s*\({wrong_platforms_string}{wrong_implementations_string}.*\)"),
 				]
 
-		print(excludes)
+		# print(excludes)
 		return excludes
 
 	else:
