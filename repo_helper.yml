@@ -36,3 +36,5 @@ classifiers:
   - 'Intended Audience :: Developers'
   - 'Topic :: Software Development :: Libraries :: Python Modules'
   - "Topic :: Utilities"
+
+sphinx_html_theme: domdf_sphinx_theme
