@@ -44,9 +44,9 @@ modname = "coverage_pyver_pragma"
 pypi_name = "coverage_pyver_pragma"
 import_name = "coverage_pyver_pragma"
 __license__ = "GNU Lesser General Public License v3 or later (LGPLv3+)"
-short_desc = "Plugin for Coverage.py to selectively ignore branches depending on the Python version."
-__author__ = author = "Dominic Davis-Foster"
-author_email = "dominic@davis-foster.co.uk"
+short_desc = 'Plugin for Coverage.py to selectively ignore branches depending on the Python version.'
+__author__ = author = 'Dominic Davis-Foster'
+author_email = 'dominic@davis-foster.co.uk'
 github_username = "domdfcoding"
 web = github_url = "https://github.com/domdfcoding/coverage_pyver_pragma"
 repo_root = pathlib.Path(__file__).parent
