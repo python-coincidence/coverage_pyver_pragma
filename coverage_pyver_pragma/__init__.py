@@ -144,13 +144,15 @@ class PyVerPragmaPlugin(coverage.CoveragePlugin):
 			config = config.config  # pragma: no cover
 
 		# Remove standard "pragma: no cover" regex
-		config.exclude_list.remove(regex_main)
+		if regex_main in config.exclude_list:
+			config.exclude_list.remove(regex_main)
+
+		if "pragma: no cover" in config.exclude_list:
+			config.exclude_list.remove("pragma: no cover")
 
 		excludes = make_regexes(sys.version_info, platform.system(), platform.python_implementation())
 		for exc_pattern in excludes:
 			config.exclude_list.append(exc_pattern.pattern)
-
-		# print(config.exclude_list)
 
 		# Reinstate the general regex, but making sure it isn't followed by a left bracket.
 		config.exclude_list += [
