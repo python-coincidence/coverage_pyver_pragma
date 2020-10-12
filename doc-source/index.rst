@@ -1,6 +1,6 @@
-######################
+======================
 coverage_pyver_pragma
-######################
+======================
 
 .. start short_desc
 
@@ -108,19 +108,6 @@ coverage_pyver_pragma
 
 .. end shields
 
-Installation
----------------
-
-.. start installation
-
-.. installation:: coverage_pyver_pragma
-	:pypi:
-	:github:
-	:anaconda:
-	:conda-channels: domdfcoding, conda-forge
-
-.. end installation
-
 .. toctree::
 	:hidden:
 
@@ -130,8 +117,14 @@ Installation
 	:maxdepth: 3
 	:caption: Documentation
 
-	usage
-	API Reference<docs>
+	installation
+	syntax
+	docs
+
+.. toctree::
+	:maxdepth: 3
+	:caption: Contributing
+
 	contributing
 	Source
 

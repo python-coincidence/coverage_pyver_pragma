@@ -2,7 +2,8 @@
 #
 #  __init__.py
 """
-Plugin for Coverage.py to selectively ignore branches depending on the Python version.
+Plugin for `Coverage.py <https://coverage.readthedocs.io/en/coverage-5.3/>`_
+to selectively ignore branches depending on the Python version.
 """
 #
 #  Copyright (c) 2020 Dominic Davis-Foster <dominic@davis-foster.co.uk>
@@ -33,6 +34,15 @@ from typing import TYPE_CHECKING, Any, List, NamedTuple, Pattern, Tuple, Union
 # 3rd party
 import coverage  # type: ignore
 
+__all__ = [
+		"regex_main",
+		"Version",
+		"make_regexes",
+		"PyVerPragmaPlugin",
+		"make_not_exclude_regexs",
+		"coverage_init",
+		]
+
 if TYPE_CHECKING:
 
 	# stdlib
@@ -50,12 +60,7 @@ regex_main: str = re.compile(r"#\s*(pragma|PRAGMA)[:\s]?\s*(no|NO)\s*(cover|COVE
 
 class Version(NamedTuple):
 	"""
-	:class:`~typing.NamedTuple` with the same elements as :func:`sys.version_info`.
-
-	:type major: int
-	:type minor: int
-	:type micro: int
-
+	:class:`~typing.NamedTuple` with the same elements as :py:data:`sys.version_info`.
 	"""
 
 	major: int
@@ -71,14 +76,12 @@ def make_regexes(
 		current_implementation: str,
 		) -> List[Pattern]:
 	"""
-	Generate a list of regular expressions to match all valid ignores for the given Python version.
+	Generates a list of regular expressions to match all valid ignores for the given Python version.
 
 	:param version_tuple: The Python version.
-	:type version_tuple: :class:`~typing.NamedTuple` with the attributes ``major`` and ``minor``.
+	:type version_tuple: :class:`~typing.NamedTuple` with the attributes ``major`` and ``minor``
 	:param current_platform:
-	:type current_platform: str
 	:param current_implementation:
-	:type current_implementation: str
 
 	:return: List of regular expressions.
 	"""
@@ -134,7 +137,8 @@ def make_regexes(
 
 class PyVerPragmaPlugin(coverage.CoveragePlugin):
 	"""
-	Plugin for Coverage.py to selectively ignore branches depending on the Python version.
+	Plugin for `Coverage.py <https://coverage.readthedocs.io/en/coverage-5.3/>`_
+	to selectively ignore branches depending on the Python version.
 	"""
 
 	def configure(self, config: Any) -> None:
@@ -171,6 +175,12 @@ def make_not_exclude_regexs(
 		current_platform: str,
 		current_implementation: str,
 		) -> List[Pattern]:
+	"""
+	Generates a list of regular expressions for lines that should not be excluded.
+
+	:param current_platform:
+	:param current_implementation:
+	"""
 
 	return [
 			re.compile(
@@ -185,12 +195,7 @@ def coverage_init(reg, options):
 	Initialise the plugin.
 
 	:param reg:
-	:type reg:
 	:param options:
-	:type options:
-
-	:return:
-	:rtype:
 	"""
 
 	reg.add_configurer(PyVerPragmaPlugin())  # pragma: no cover
