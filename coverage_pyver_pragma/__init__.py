@@ -28,7 +28,7 @@ Plugin for Coverage.py to selectively ignore branches depending on the Python ve
 import platform
 import re
 import sys
-from typing import TYPE_CHECKING, Any, List, NamedTuple, Pattern, Union
+from typing import TYPE_CHECKING, Any, List, NamedTuple, Pattern, Tuple, Union
 
 # 3rd party
 import coverage  # type: ignore
@@ -60,13 +60,13 @@ class Version(NamedTuple):
 
 	major: int
 	minor: int
-	micro: int
-	releaselevel: str
-	serial: str
+	micro: int = 0
+	releaselevel: str = ''
+	serial: str = ''
 
 
 def make_regexes(
-		version_tuple: Union["Version", "VersionInfo"],
+		version_tuple: Union["Version", "VersionInfo", Tuple[int, ...]],
 		current_platform: str,
 		current_implementation: str,
 		) -> List[Pattern]:
@@ -82,6 +82,9 @@ def make_regexes(
 
 	:return: List of regular expressions.
 	"""
+
+	version_tuple = Version(*version_tuple)
+
 	if version_tuple.major == 3:
 		# Python 3.X
 
@@ -117,7 +120,9 @@ def make_regexes(
 				re.compile(
 						fr"{regex_main}\s*\((?=\s*(py|PY|Py)3({'|'.join(exact_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"
 						),
-				re.compile(fr"{regex_main}\s*\({wrong_platforms_string}{wrong_implementations_string}.*\)"),
+				re.compile(
+						fr"{regex_main}\s*\((?!.*(py|PY|Py)[0-9]+){wrong_platforms_string}{wrong_implementations_string}.*\)"
+						),
 				]
 
 		# print(excludes)
