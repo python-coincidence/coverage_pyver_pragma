@@ -13,9 +13,6 @@ sys.path.append(os.path.abspath('..'))
 # this package
 from __pkginfo__ import __version__
 
-# User-configurable lines
-# End of user-configurable lines
-
 github_username = "domdfcoding"
 github_repository = "coverage_pyver_pragma"
 github_url = f"https://github.com/{github_username}/{github_repository}"
@@ -67,9 +64,6 @@ pygments_style = 'default'
 intersphinx_mapping = {
 		'python': ('https://docs.python.org/3/', None),
 		'sphinx': ('https://www.sphinx-doc.org/en/stable/', None),
-		'rtd': ('https://docs.readthedocs.io/en/latest/', None),
-		"h5py": ('https://docs.h5py.org/en/latest/', None),
-		"sarge": ('https://sarge.readthedocs.io/en/latest/', None),
 		}
 
 html_theme = 'domdf_sphinx_theme'
@@ -107,10 +101,13 @@ toctree_plus_types = {
 		"protocol",
 		"typeddict",
 		"namedtuple",
+		"exception",
 		}
 
 add_module_names = False
 hide_none_rtype = True
+all_typevars = True
+overloads_location = "bottom"
 
 
 autodoc_exclude_members = [   # Exclude "standard" methods.
