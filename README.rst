@@ -36,17 +36,17 @@ coverage_pyver_pragma
 	:target: https://github.com/domdfcoding/coverage_pyver_pragma/actions?query=workflow%3A%22Docs+Check%22
 	:alt: Docs Check Status
 
-.. |travis| image:: https://img.shields.io/travis/com/domdfcoding/coverage_pyver_pragma/master?logo=travis
-	:target: https://travis-ci.com/domdfcoding/coverage_pyver_pragma
-	:alt: Travis Build Status
+.. |travis| image:: https://github.com/domdfcoding/coverage_pyver_pragma/workflows/Linux%20Tests/badge.svg
+	:target: https://github.com/domdfcoding/coverage_pyver_pragma/actions?query=workflow%3A%Linux+Tests%22
+	:alt: Linux Test Status
 
 .. |actions_windows| image:: https://github.com/domdfcoding/coverage_pyver_pragma/workflows/Windows%20Tests/badge.svg
 	:target: https://github.com/domdfcoding/coverage_pyver_pragma/actions?query=workflow%3A%22Windows+Tests%22
-	:alt: Windows Tests Status
+	:alt: Windows Test Status
 
 .. |actions_macos| image:: https://github.com/domdfcoding/coverage_pyver_pragma/workflows/macOS%20Tests/badge.svg
 	:target: https://github.com/domdfcoding/coverage_pyver_pragma/actions?query=workflow%3A%22macOS+Tests%22
-	:alt: macOS Tests Status
+	:alt: macOS Test Status
 
 .. |requires| image:: https://requires.io/github/domdfcoding/coverage_pyver_pragma/requirements.svg?branch=master
 	:target: https://requires.io/github/domdfcoding/coverage_pyver_pragma/requirements/?branch=master
