@@ -21,7 +21,7 @@ def test_not_version_regex():
 		for pragma_string in ["pragma", "PRAGMA"]:
 			for post_pragma_space in ['', ':', ": ", ":\t", "  "]:
 				for no_string in ["no", "NO"]:
-					for post_no_space in ['', ' ', "\t", "  "]:
+					for post_no_space in ['', ' ', '\t', "  "]:
 						for cover_string in ["cover", "COVER"]:
 							for post_cover_space in [' ']:
 								# ['', ' ', "\t", "  "]:  # TODO: This regex is picky about the space here
@@ -41,7 +41,7 @@ def test_not_version_regex():
 		for pragma_string in ["pragma", "PRAGMA"]:
 			for post_pragma_space in ['', ':', ": ", ":\t", "  "]:
 				for no_string in ["no", "NO"]:
-					for post_no_space in ['', ' ', "\t", "  "]:
+					for post_no_space in ['', ' ', '\t', "  "]:
 						for cover_string in ["cover", "COVER"]:
 							for post_cover_space in [' ']:
 								# ['', ' ', "\t", "  "]:  # TODO: This regex is picky about the space here
@@ -60,7 +60,7 @@ def test_not_version_regex():
 		for pragma_string in ["pragma", "PRAGMA"]:
 			for post_pragma_space in ['', ':', ": ", ":\t", "  "]:
 				for no_string in ["no", "NO"]:
-					for post_no_space in ['', ' ', "\t", "  "]:
+					for post_no_space in ['', ' ', '\t', "  "]:
 						for cover_string in ["cover", "COVER"]:
 							for post_cover_space in ['']:
 								for post_cover_text in ['']:
