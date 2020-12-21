@@ -18,35 +18,45 @@ coverage_pyver_pragma
 	* - Docs
 	  - |docs| |docs_check|
 	* - Tests
-	  - |travis| |actions_windows| |actions_macos| |coveralls| |codefactor| |pre_commit_ci|
+	  - |actions_linux| |actions_windows| |actions_macos| |coveralls|
 	* - PyPI
 	  - |pypi-version| |supported-versions| |supported-implementations| |wheel|
 	* - Anaconda
 	  - |conda-version| |conda-platform|
 	* - Activity
-	  - |commits-latest| |commits-since| |maintained|
+	  - |commits-latest| |commits-since| |maintained| |pypi-downloads|
+	* - QA
+	  - |codefactor| |actions_flake8| |actions_mypy| |pre_commit_ci|
 	* - Other
-	  - |license| |language| |requires| |pre_commit|
+	  - |license| |language| |requires|
 
 .. |docs| image:: https://img.shields.io/readthedocs/coverage_pyver_pragma/latest?logo=read-the-docs
-	:target: https://coverage_pyver_pragma.readthedocs.io/en/latest/?badge=latest
+	:target: https://coverage_pyver_pragma.readthedocs.io/en/latest
 	:alt: Documentation Build Status
 
 .. |docs_check| image:: https://github.com/domdfcoding/coverage_pyver_pragma/workflows/Docs%20Check/badge.svg
 	:target: https://github.com/domdfcoding/coverage_pyver_pragma/actions?query=workflow%3A%22Docs+Check%22
 	:alt: Docs Check Status
 
-.. |travis| image:: https://github.com/domdfcoding/coverage_pyver_pragma/workflows/Linux%20Tests/badge.svg
-	:target: https://github.com/domdfcoding/coverage_pyver_pragma/actions?query=workflow%3A%22Linux+Tests%22
+.. |actions_linux| image:: https://github.com/domdfcoding/coverage_pyver_pragma/workflows/Linux/badge.svg
+	:target: https://github.com/domdfcoding/coverage_pyver_pragma/actions?query=workflow%3A%22Linux%22
 	:alt: Linux Test Status
 
-.. |actions_windows| image:: https://github.com/domdfcoding/coverage_pyver_pragma/workflows/Windows%20Tests/badge.svg
-	:target: https://github.com/domdfcoding/coverage_pyver_pragma/actions?query=workflow%3A%22Windows+Tests%22
+.. |actions_windows| image:: https://github.com/domdfcoding/coverage_pyver_pragma/workflows/Windows/badge.svg
+	:target: https://github.com/domdfcoding/coverage_pyver_pragma/actions?query=workflow%3A%22Windows%22
 	:alt: Windows Test Status
 
-.. |actions_macos| image:: https://github.com/domdfcoding/coverage_pyver_pragma/workflows/macOS%20Tests/badge.svg
-	:target: https://github.com/domdfcoding/coverage_pyver_pragma/actions?query=workflow%3A%22macOS+Tests%22
+.. |actions_macos| image:: https://github.com/domdfcoding/coverage_pyver_pragma/workflows/macOS/badge.svg
+	:target: https://github.com/domdfcoding/coverage_pyver_pragma/actions?query=workflow%3A%22macOS%22
 	:alt: macOS Test Status
+
+.. |actions_flake8| image:: https://github.com/domdfcoding/coverage_pyver_pragma/workflows/Flake8/badge.svg
+	:target: https://github.com/domdfcoding/coverage_pyver_pragma/actions?query=workflow%3A%22Flake8%22
+	:alt: Flake8 Status
+
+.. |actions_mypy| image:: https://github.com/domdfcoding/coverage_pyver_pragma/workflows/mypy/badge.svg
+	:target: https://github.com/domdfcoding/coverage_pyver_pragma/actions?query=workflow%3A%22mypy%22
+	:alt: mypy status
 
 .. |requires| image:: https://requires.io/github/domdfcoding/coverage_pyver_pragma/requirements.svg?branch=master
 	:target: https://requires.io/github/domdfcoding/coverage_pyver_pragma/requirements/?branch=master
@@ -102,9 +112,9 @@ coverage_pyver_pragma
 .. |maintained| image:: https://img.shields.io/maintenance/yes/2020
 	:alt: Maintenance
 
-.. |pre_commit| image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
-	:target: https://github.com/pre-commit/pre-commit
-	:alt: pre-commit
+.. |pypi-downloads| image:: https://img.shields.io/pypi/dm/coverage_pyver_pragma
+	:target: https://pypi.org/project/coverage_pyver_pragma/
+	:alt: PyPI - Downloads
 
 .. |pre_commit_ci| image:: https://results.pre-commit.ci/badge/github/domdfcoding/coverage_pyver_pragma/master.svg
 	:target: https://results.pre-commit.ci/latest/github/domdfcoding/coverage_pyver_pragma/master
@@ -133,8 +143,8 @@ To install with ``conda``:
 
 	.. code-block:: bash
 
-		$ conda config --add channels http://conda.anaconda.org/domdfcoding
 		$ conda config --add channels http://conda.anaconda.org/conda-forge
+		$ conda config --add channels http://conda.anaconda.org/domdfcoding
 
 	* Then install
 
