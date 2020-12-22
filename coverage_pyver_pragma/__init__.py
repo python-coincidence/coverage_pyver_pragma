@@ -4,7 +4,7 @@
 """
 Plugin for `Coverage.py <https://coverage.readthedocs.io/en/coverage-5.3/>`_
 to selectively ignore branches depending on the Python version.
-"""
+"""  # noqa: D400
 #
 #  Copyright (c) 2020 Dominic Davis-Foster <dominic@davis-foster.co.uk>
 #
@@ -139,7 +139,7 @@ class PyVerPragmaPlugin(coverage.CoveragePlugin):
 	"""
 	Plugin for `Coverage.py <https://coverage.readthedocs.io/en/coverage-5.3/>`_
 	to selectively ignore branches depending on the Python version.
-	"""
+	"""  # noqa: D400
 
 	def configure(self, config: Any) -> None:
 		"""
