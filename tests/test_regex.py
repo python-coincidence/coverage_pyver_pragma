@@ -370,5 +370,5 @@ def test_platforms_regex_spaces(
 				]
 		)
 def test_invalid_versions(version_tuple):
-	with pytest.raises(ValueError):
+	with pytest.raises(ValueError, match="Unknown Python version."):
 		make_regexes(version_tuple, "Linux", "CPython")
