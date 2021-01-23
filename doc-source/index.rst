@@ -1,6 +1,6 @@
-======================
+######################
 coverage_pyver_pragma
-======================
+######################
 
 .. start short_desc
 
@@ -122,6 +122,19 @@ coverage_pyver_pragma
 	:alt: pre-commit.ci status
 
 .. end shields
+
+Installation
+---------------
+
+.. start installation
+
+.. installation:: coverage_pyver_pragma
+	:pypi:
+	:github:
+	:anaconda:
+	:conda-channels: conda-forge, domdfcoding
+
+.. end installation
 
 .. toctree::
 	:hidden:

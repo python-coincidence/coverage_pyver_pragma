@@ -122,8 +122,6 @@ coverage_pyver_pragma
 
 .. end shields
 
-|
-
 Installation
 --------------
 

@@ -1,11 +1,11 @@
 modname: coverage_pyver_pragma
 repo_name: coverage_pyver_pragma
-copyright_years: "2020"
+copyright_years: "2020-2021"
 author: "Dominic Davis-Foster"
 email: "dominic@davis-foster.co.uk"
 version: "0.0.6"
 username: "domdfcoding"
-license: 'LGPLv3+'
+license: 'MIT'
 short_desc: "Plugin for Coverage.py to selectively ignore branches depending on the Python version."
 
 conda_channels:
@@ -22,18 +22,11 @@ python_versions:
   - "3.9"
   - "pypy3"
 
-# travis secure password for PyPI
-
-# directory that contains tests
 tests_dir: "tests"
 
 classifiers:
   - 'Development Status :: 4 - Beta'
-#  - "Development Status :: 5 - Production/Stable"
-#  - "Development Status :: 6 - Mature"
-#  - "Development Status :: 7 - Inactive"
   - 'Intended Audience :: Developers'
-  - 'Topic :: Software Development :: Libraries :: Python Modules'
   - "Topic :: Utilities"
 
 sphinx_html_theme: domdf_sphinx_theme
