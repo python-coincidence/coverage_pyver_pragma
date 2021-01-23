@@ -1,3 +1,4 @@
+coincidence>=0.1.0
 domdf-python-tools[testing]>=2.0.1
 iniconfig!=1.1.0,>=1.0.1
 pytest>=6.0.0
