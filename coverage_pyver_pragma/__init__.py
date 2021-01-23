@@ -55,7 +55,7 @@ __license__: str = "LGPLV3+"
 __version__: str = "0.0.6"
 __email__: str = "dominic@davis-foster.co.uk"
 
-regex_main: str = re.compile(r"#\s*(pragma|PRAGMA)[:\s]?\s*(no|NO)\s*(cover|COVER)").pattern
+regex_main: str = re.compile(r"(?i)#\s*pragma[:\s]?\s*no\s*cover").pattern
 
 
 class Version(NamedTuple):
@@ -106,25 +106,25 @@ def make_regexes(
 		# We do it with re.compile to get the syntax highlighting in PyCharm
 		excludes = [
 				re.compile(
-						fr"{regex_main}\s*\((?=\s*<(py|PY|Py)3({'|'.join(less_than_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"
+						fr"{regex_main}\s*\((?=\s*<py3({'|'.join(less_than_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"
 						),
 				re.compile(
-						fr"{regex_main}\s*\((?=\s*<=(py|PY|Py)3({'|'.join(less_equal_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"
+						fr"{regex_main}\s*\((?=\s*<=py3({'|'.join(less_equal_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"
 						),
 				re.compile(
-						fr"{regex_main}\s*\((?=\s*>(py|PY|Py)3({'|'.join(greater_than_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"
+						fr"{regex_main}\s*\((?=\s*>py3({'|'.join(greater_than_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"
 						),
 				re.compile(
-						fr"{regex_main}\s*\((?=\s*(py|PY|Py)3({'|'.join(greater_equal_versions)})\+){wrong_platforms_string}{wrong_implementations_string}.*\)"
+						fr"{regex_main}\s*\((?=\s*py3({'|'.join(greater_equal_versions)})\+){wrong_platforms_string}{wrong_implementations_string}.*\)"
 						),
 				re.compile(
-						fr"{regex_main}\s*\((?=\s*>=(py|PY|Py)3({'|'.join(greater_equal_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"
+						fr"{regex_main}\s*\((?=\s*>=py3({'|'.join(greater_equal_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"
 						),
 				re.compile(
-						fr"{regex_main}\s*\((?=\s*(py|PY|Py)3({'|'.join(exact_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"
+						fr"{regex_main}\s*\((?=\s*py3({'|'.join(exact_versions)})){wrong_platforms_string}{wrong_implementations_string}.*\)"
 						),
 				re.compile(
-						fr"{regex_main}\s*\((?!.*(py|PY|Py)[0-9]+){wrong_platforms_string}{wrong_implementations_string}.*\)"
+						fr"{regex_main}\s*\((?!.*py[0-9]+){wrong_platforms_string}{wrong_implementations_string}.*\)"
 						),
 				]
 
@@ -184,7 +184,7 @@ def make_not_exclude_regexs(
 
 	return [
 			re.compile(
-					fr"{regex_main} (?!\(.*(.{{0,2}}(py|PY|Py)3\d(\+)?|!{current_platform}|!{current_implementation}).*\)).*$"
+					fr"{regex_main} (?!\(.*(.{{0,2}}py3\d(\+)?|!{current_platform}|!{current_implementation}).*\)).*$"
 					),
 			re.compile(fr"{regex_main}$"),
 			]
