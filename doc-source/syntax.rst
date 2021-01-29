@@ -41,3 +41,7 @@ These can also be combined with the Python version:
 .. code-block:: python
 
 	# pragma: no cover (<=py36 !Windows !CPython)
+
+This will ignore coverage (or lack thereof) for the branch if all three conditions are satisfied
+(Python 3.6 or earlier AND not Windows AND not CPython).
+It is not currently possible to ignore a branch if EITHER condition is true.
