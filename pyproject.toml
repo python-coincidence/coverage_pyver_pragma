@@ -1,3 +1,23 @@
 [build-system]
 requires = [ "setuptools>=40.6.0", "wheel>=0.34.2",]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "coverage_pyver_pragma"
+version = "0.2.0"
+description = "Plugin for Coverage.py to selectively ignore branches depending on the Python version."
+readme = "README.rst"
+keywords = []
+dynamic = [ "requires-python", "classifiers", "dependencies",]
+[[project.authors]]
+email = "dominic@davis-foster.co.uk"
+name = "Dominic Davis-Foster"
+
+[project.license]
+file = "LICENSE"
+
+[project.urls]
+Homepage = "https://github.com/domdfcoding/coverage_pyver_pragma"
+"Issue Tracker" = "https://github.com/domdfcoding/coverage_pyver_pragma/issues"
+"Source Code" = "https://github.com/domdfcoding/coverage_pyver_pragma"
+Documentation = "https://coverage_pyver_pragma.readthedocs.io/en/latest"

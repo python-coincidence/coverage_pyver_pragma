@@ -1,21 +1,33 @@
 # stdlib
-import platform
-import sys
+from io import StringIO
+
+# 3rd party
+import coverage  # type: ignore
+from coincidence.regressions import check_file_regression
+from coverage.python import PythonParser  # type: ignore
+from domdf_python_tools.paths import PathPlus
+from pytest_regressions.file_regression import FileRegressionFixture
 
 # this package
-from coverage_pyver_pragma import PyVerPragmaPlugin, make_not_exclude_regexs, make_regexes, regex_main
+import coverage_pyver_pragma
 
 
-class MockConfig:
+def test_plugin(tmp_pathplus: PathPlus, file_regression: FileRegressionFixture):
+	coverage_pyver_pragma.coverage_init()
 
-	def __init__(self):
-		self.exclude_list = [regex_main]
+	assert PythonParser.lines_matching is coverage_pyver_pragma.PythonParser.lines_matching
 
+	cov = coverage.Coverage()
+	cov.start()
 
-def test_plugin():
-	mock_config = MockConfig()
-	PyVerPragmaPlugin().configure(mock_config)
+	# this package
+	import tests.demo_code
 
-	assert mock_config.exclude_list == [
-			p.pattern for p in make_regexes(sys.version_info, platform.system(), platform.python_implementation())
-			] + [p.pattern for p in make_not_exclude_regexs(platform.system(), platform.python_implementation())]
+	cov.stop()
+	cov.save()
+
+	output = StringIO()
+	cov.report(morfs=[tests.demo_code.__file__], file=output)
+	cov.erase()
+
+	check_file_regression(output.getvalue().replace(tests.demo_code.__file__, "demo_code.py"), file_regression)
