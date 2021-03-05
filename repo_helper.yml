@@ -33,3 +33,6 @@ sphinx_html_theme: domdf_sphinx_theme
 tox_unmanaged:
   - coverage:run
   - testenv:coverage
+
+intersphinx_mapping:
+  - "'pyparsing': ('https://pyparsing-docs.readthedocs.io/en/latest', None)"

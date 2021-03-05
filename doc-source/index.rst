@@ -103,7 +103,7 @@ coverage_pyver_pragma
 	:alt: GitHub top language
 
 .. |commits-since| github-shield::
-	:commits-since: v0.0.6
+	:commits-since: v0.2.0
 	:alt: GitHub commits since tagged version
 
 .. |commits-latest| github-shield::
@@ -147,7 +147,7 @@ Installation
 
 	installation
 	syntax
-	docs
+	api
 
 .. toctree::
 	:maxdepth: 3

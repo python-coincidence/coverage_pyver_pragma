@@ -2,16 +2,23 @@
 #
 #  grammar.py
 """
-The expression grammar for ``coverage_pyver_pragma``.
-
 .. versionadded:: 0.2.0
 
-Each expression consists of one or more tags (``VERSION_TAG``, ``PLATFORM_TAG`` or ``IMPLEMENTATION_TAG``).
+As with ``coverage.py``, lines are marked with comments in the form::
+
+	# pragma: no cover
+
+With ``coverage_pyver_pragma``, the comment may be followed with an expression enclosed in parentheses::
+
+	# pragma: no cover (<=py38 and !Windows)
+
+Each expression consists of one or more tags
+(:py:data:`VERSION_TAG`, :py:data:`PLATFORM_TAG` or :py:data:`IMPLEMENTATION_TAG`).
 The tags can be joined with the keywords ``AND``, ``OR`` and ``NOT``, with the exclamation mark ``!`` implying ``NOT``.
 Parentheses can be used to group sub expressions.
+A series of tags without keywords in between them are evaluated with ``AND``.
 
-``VERSION_TAG``
--------------------
+.. py:data:: VERSION_TAG
 
 A ``VERSION_TAG`` comprises an optional comparator (one of ``<=``, ``<``, ``>=``, ``>``),
 a version specifier in the form ``pyXX``, and an optional ``+`` to indicate ``>=``.
@@ -27,8 +34,7 @@ a version specifier in the form ``pyXX``, and an optional ``+`` to indicate ``>=
 	py34+  # equivalent to >=py34
 
 
-``PLATFORM_TAG``
--------------------
+.. py:data::  PLATFORM_TAG
 
 A ``PLATFORM_TAG`` comprises a single word which will be compared (ignoring case)
 with the output of :func:`platform.system`.
@@ -45,8 +51,7 @@ with the output of :func:`platform.system`.
 If the current platform cannot be determined all strings are treated as :py:obj:`True`.
 
 
-``IMPLEMENTATION_TAG``
------------------------
+.. py:data:: IMPLEMENTATION_TAG
 
 An ``IMPLEMENTATION_TAG`` comprises a single word which will be compared (ignoring case)
 with the output of :func:`platform.python_implementation`.
@@ -63,10 +68,32 @@ with the output of :func:`platform.python_implementation`.
 Examples
 -----------
 
-.. parsed-literal::
+ignore if the Python version is less than or equal to 3.7::
 
-	>py36 and !PyPy
-	Windows and <py38
+	# pragma: no cover (<=py37)
+
+ignore if running on Python 3.9::
+
+	# pragma: no cover (py39)
+
+Ignore if the Python version is greater than 3.6 and it's not running on PyPy::
+
+	# pragma: no cover (>py36 and !PyPy)
+
+Ignore if the Python version is less than 3.8 and it's running on Windows::
+
+	# pragma: no cover (Windows and <py38)
+
+Ignore when not running on macOS (Darwin)::
+
+	# pragma: no cover (!Darwin)
+
+Ignore when not running on CPython::
+
+	# pragma: no cover (!CPython)
+
+API Reference
+----------------
 
 """
 #
@@ -106,6 +133,7 @@ from pyparsing import (  # type: ignore
 		Literal,
 		OneOrMore,
 		Optional,
+		ParserElement,
 		ParseResults,
 		Word,
 		infixNotation,
@@ -200,8 +228,8 @@ class PlatformTag(str):
 
 	__slots__ = ()
 
-	def __new__(cls, token: ParseResults):  # noqa: D102
-		return super().__new__(cls, str(token["platform"]))
+	def __new__(cls, tokens: ParseResults):  # noqa: D102
+		return super().__new__(cls, str(tokens["platform"]))
 
 	def __repr__(self) -> str:  # pragma: no cover
 		return f"<{self.__class__.__name__}({str(self)!r})>"
@@ -353,7 +381,7 @@ IMPLEMENTATION_TAG.setParseAction(ImplementationTag)
 
 ELEMENTS = VERSION_TAG | PLATFORM_TAG | IMPLEMENTATION_TAG
 
-GRAMMAR = OneOrMore(
+GRAMMAR: ParserElement = OneOrMore(
 		infixNotation(
 				ELEMENTS,
 				[
@@ -363,3 +391,8 @@ GRAMMAR = OneOrMore(
 						]
 				)
 		)
+"""
+The ``coverage_pyver_pragma`` expression grammar.
+
+This can be used to parse an expression outside of the coverage context.
+"""
