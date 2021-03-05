@@ -8,6 +8,10 @@ username: "domdfcoding"
 license: 'MIT'
 short_desc: "Plugin for Coverage.py to selectively ignore branches depending on the Python version."
 
+use_whey: True
+min_coverage: 95
+sphinx_html_theme: furo
+
 conda_channels:
   - conda-forge
 
@@ -27,8 +31,6 @@ classifiers:
   - 'Development Status :: 4 - Beta'
   - 'Intended Audience :: Developers'
   - "Topic :: Utilities"
-
-sphinx_html_theme: domdf_sphinx_theme
 
 tox_unmanaged:
   - coverage:run
