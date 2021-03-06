@@ -1,4 +1,5 @@
 # stdlib
+import os
 from io import StringIO
 
 # 3rd party
@@ -30,4 +31,6 @@ def test_plugin(tmp_pathplus: PathPlus, file_regression: FileRegressionFixture):
 	cov.report(morfs=[tests.demo_code.__file__], file=output)
 	cov.erase()
 
-	check_file_regression(output.getvalue().replace(tests.demo_code.__file__, "demo_code.py"), file_regression)
+	buf = output.getvalue().replace(tests.demo_code.__file__, "demo_code.py")
+	buf = buf.replace(os.path.altsep or os.path.sep, os.path.sep)
+	check_file_regression(buf, file_regression)
