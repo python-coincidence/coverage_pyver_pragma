@@ -15,13 +15,16 @@ from pytest_regressions.file_regression import FileRegressionFixture
 import coverage_pyver_pragma
 
 
-@pytest.mark.parametrize("version", [
-		pytest.param("3.6", marks=only_version(3.6, "Output differs on each version.")),
-		pytest.param("3.7", marks=only_version(3.7, "Output differs on each version.")),
-		pytest.param("3.8", marks=only_version(3.8, "Output differs on each version.")),
-		pytest.param("3.9", marks=only_version(3.9, "Output differs on each version.")),
-		pytest.param("3.10", marks=only_version("3.10", "Output differs on each version.")),
-		])
+@pytest.mark.parametrize(
+		"version",
+		[
+				pytest.param("3.6", marks=only_version(3.6, "Output differs on each version.")),
+				pytest.param("3.7", marks=only_version(3.7, "Output differs on each version.")),
+				pytest.param("3.8", marks=only_version(3.8, "Output differs on each version.")),
+				pytest.param("3.9", marks=only_version(3.9, "Output differs on each version.")),
+				pytest.param("3.10", marks=only_version("3.10", "Output differs on each version.")),
+				]
+		)
 def test_plugin(tmp_pathplus: PathPlus, file_regression: FileRegressionFixture, version):
 	coverage_pyver_pragma.coverage_init()
 
