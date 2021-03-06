@@ -49,8 +49,9 @@ __all__ = ["DSL_EXCLUDE", "evaluate_exclude"]
 
 DSL_EXCLUDE = re.compile(r'.*#\s*(?:pragma|PRAGMA)[:\s]?\s*(?:no|NO)\s*(?:cover|COVER)\s*\((.*)\)')
 """
-Compiled regular expression to match comments in the for ``# pragma: no cover (XXX)``,
-where ``XXX`` is an expression to be evaluated to determine whether the line should be excluded from coverage.
+Compiled regular expression to match comments in the ``# pragma: no cover (XXX)``,
+where ``XXX`` is an expression to be evaluated to determine whether the line
+should be excluded from coverage.
 
 .. versionadded:: 0.2.0
 """
@@ -61,6 +62,8 @@ def evaluate_exclude(expression: str) -> bool:
 	Evaluate the given expression to determine whether the line should be excluded from coverage.
 
 	.. versionadded:: 0.2.0
+
+	|
 
 	:param expression:
 	"""
