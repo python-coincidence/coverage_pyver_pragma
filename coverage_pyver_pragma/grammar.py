@@ -187,20 +187,20 @@ class VersionTag(packaging.specifiers.SpecifierSet):
 			raise SyntaxError("Cannot combine a comparator with the plus sign.")
 
 		elif "plus" in token_dict:
-			super().__init__(f">={version}")
+			super().__init__(f">={version[0]}.{version[1:]}")
 
 		elif "comparator" in token_dict:
 			comparator = token_dict["comparator"]
-			super().__init__(f"{comparator}{version}")
+			super().__init__(f"{comparator}{version[0]}.{version[1:]}")
 
 		else:
-			super().__init__(f"=={version}")
+			super().__init__(f"=={version[0]}.{version[1:]}")
 
 	def __repr__(self) -> str:  # pragma: no cover
 		return f"<{self.__class__.__name__}({str(self)!r})>"
 
 	def __bool__(self) -> bool:
-		current_version = ''.join(platform.python_version_tuple()[:2])
+		current_version = '.'.join(platform.python_version_tuple()[:2])
 		return current_version in self
 
 
