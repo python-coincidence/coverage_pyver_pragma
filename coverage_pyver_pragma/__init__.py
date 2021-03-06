@@ -91,7 +91,8 @@ class PythonParser(coverage.python.PythonParser):  # noqa: D102
 				with suppress(pyparsing.ParseBaseException):
 					if evaluate_exclude(exclude_source):
 						matches.add(idx)
-						continue
+
+					continue
 
 			if regex_c.search(ltext):
 				matches.add(idx)

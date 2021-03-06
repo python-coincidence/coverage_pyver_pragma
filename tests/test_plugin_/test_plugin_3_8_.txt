@@ -1,5 +1,5 @@
 Name                 Stmts   Miss  Cover
 ----------------------------------------
-tests/demo_code.py       1      0   100%
+tests/demo_code.py       2      0   100%
 ----------------------------------------
-TOTAL                    1      0   100%
+TOTAL                    2      0   100%
