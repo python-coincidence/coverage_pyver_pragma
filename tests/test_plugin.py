@@ -32,5 +32,5 @@ def test_plugin(tmp_pathplus: PathPlus, file_regression: FileRegressionFixture):
 	cov.erase()
 
 	buf = output.getvalue().replace(tests.demo_code.__file__, "demo_code.py")
-	buf = buf.replace(os.path.altsep or os.path.sep, os.path.sep)
+	buf = buf.replace(os.path.sep, os.path.altsep or os.path.sep)
 	check_file_regression(buf, file_regression)
