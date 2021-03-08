@@ -120,6 +120,7 @@ API Reference
 
 # stdlib
 import platform
+import sys
 
 # 3rd party
 import packaging.specifiers
@@ -155,6 +156,17 @@ __all__ = [
 		"IMPLEMENTATION_TAG",
 		"GRAMMAR",
 		]
+
+# This ensures coverage.py records the correct coverage for these modules
+# when they are under test
+
+for module in [
+		"domdf_python_tools",
+		"domdf_python_tools.doctools",
+		"domdf_python_tools.stringlist",
+		]:
+	if module in sys.modules:
+		del sys.modules[module]
 
 
 @prettify_docstrings
