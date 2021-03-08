@@ -3,7 +3,7 @@ repo_name: coverage_pyver_pragma
 copyright_years: "2020-2021"
 author: "Dominic Davis-Foster"
 email: "dominic@davis-foster.co.uk"
-version: "0.2.1"
+version: "0.2.2"
 username: "domdfcoding"
 license: 'MIT'
 short_desc: "Plugin for Coverage.py to selectively ignore branches depending on the Python version."
