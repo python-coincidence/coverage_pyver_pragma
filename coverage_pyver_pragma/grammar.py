@@ -160,11 +160,7 @@ __all__ = [
 # This ensures coverage.py records the correct coverage for these modules
 # when they are under test
 
-for module in [
-		"domdf_python_tools",
-		"domdf_python_tools.doctools",
-		"domdf_python_tools.stringlist",
-		]:
+for module in [m for m in sys.modules if m.startswith("domdf_python_tools")]:
 	if module in sys.modules:
 		del sys.modules[module]
 
