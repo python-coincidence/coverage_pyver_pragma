@@ -58,7 +58,7 @@ should be excluded from coverage.
 """
 
 
-@functools.lru_cache
+@functools.lru_cache()
 def evaluate_exclude(expression: str) -> bool:
 	"""
 	Evaluate the given expression to determine whether the line should be excluded from coverage.
