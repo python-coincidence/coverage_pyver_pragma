@@ -27,6 +27,7 @@ Plugin for Coverage.py to selectively ignore branches depending on the Python ve
 #
 
 # stdlib
+import functools
 import re
 from contextlib import suppress
 
@@ -57,6 +58,7 @@ should be excluded from coverage.
 """
 
 
+@functools.lru_cache
 def evaluate_exclude(expression: str) -> bool:
 	"""
 	Evaluate the given expression to determine whether the line should be excluded from coverage.
