@@ -43,7 +43,7 @@ from coverage_pyver_pragma.grammar import GRAMMAR
 __author__: str = "Dominic Davis-Foster"
 __copyright__: str = "2020-2021 Dominic Davis-Foster"
 __license__: str = "MIT License"
-__version__: str = "0.2.3"
+__version__: str = "0.2.4"
 __email__: str = "dominic@davis-foster.co.uk"
 
 __all__ = ["DSL_EXCLUDE", "evaluate_exclude"]
@@ -54,7 +54,7 @@ Compiled regular expression to match comments in the ``# pragma: no cover (XXX)`
 where ``XXX`` is an expression to be evaluated to determine whether the line
 should be excluded from coverage.
 
-.. versionadded:: 0.2.3
+.. versionadded:: 0.2.4
 """
 
 
@@ -63,7 +63,7 @@ def evaluate_exclude(expression: str) -> bool:
 	"""
 	Evaluate the given expression to determine whether the line should be excluded from coverage.
 
-	.. versionadded:: 0.2.3
+	.. versionadded:: 0.2.4
 
 	|
 
