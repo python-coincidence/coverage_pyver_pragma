@@ -3,13 +3,13 @@ Downloading source code
 =========================
 
 The ``coverage_pyver_pragma`` source code is available on GitHub,
-and can be accessed from the following URL: https://github.com/domdfcoding/coverage_pyver_pragma
+and can be accessed from the following URL: https://github.com/python-coincidence/coverage_pyver_pragma
 
 If you have ``git`` installed, you can clone the repository with the following command:
 
 .. code-block:: bash
 
-    $ git clone https://github.com/domdfcoding/coverage_pyver_pragma"
+    $ git clone https://github.com/python-coincidence/coverage_pyver_pragma"
     > Cloning into 'coverage_pyver_pragma'...
     > remote: Enumerating objects: 47, done.
     > remote: Counting objects: 100% (47/47), done.

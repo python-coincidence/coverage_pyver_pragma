@@ -4,18 +4,19 @@ copyright_years: "2020-2021"
 author: "Dominic Davis-Foster"
 email: "dominic@davis-foster.co.uk"
 version: "0.2.4"
-username: "domdfcoding"
+username: "python-coincidence"
+assignee: "domdfcoding"
+primary_conda_channel: "domdfcoding"
 license: 'MIT'
 short_desc: "Plugin for Coverage.py to selectively ignore branches depending on the Python version."
 
 use_whey: True
 min_coverage: 95
 sphinx_html_theme: furo
+python_deploy_version: 3.6
 
 conda_channels:
   - conda-forge
-
-python_deploy_version: 3.6
 
 # Versions to run tests for
 python_versions:
@@ -26,8 +27,6 @@ python_versions:
   - "3.10-dev"
   - pypy36
   - pypy37
-
-tests_dir: "tests"
 
 classifiers:
   - 'Development Status :: 4 - Beta'
