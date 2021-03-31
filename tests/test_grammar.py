@@ -1,7 +1,7 @@
 # stdlib
 import platform
 import sys
-from typing import Tuple
+from typing import Tuple, Type
 
 # 3rd party
 import pytest
@@ -80,13 +80,17 @@ def test_grammar_current_platform_etc():
 	assert evaluate_exclude(f"{platform.system()}")
 
 
-@pytest.mark.parametrize("expression", [
-		"36",
-		"36 and",
-		"py36 and",
-		"windows and",
-		"!bpython and pypy",
+@pytest.mark.parametrize("expression, exception", [
+		("36", ParseBaseException),
+		("36 and", ParseBaseException),
+		("py36 and", ParseBaseException),
+		("windows and", ParseBaseException),
+		("!bpython and pypy", ParseBaseException),
+		("<py38+", SyntaxError),
 		])
-def test_bad_grammar(expression: str):
-	with pytest.raises(ParseBaseException):
+def test_bad_grammar(expression: str, exception: Type[Exception]):
+	with pytest.raises(exception):
 		evaluate_exclude(expression)
+
+
+# TODO: tests for LogicalOp classes
