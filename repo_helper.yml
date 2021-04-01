@@ -39,3 +39,6 @@ tox_unmanaged:
 
 intersphinx_mapping:
   - "'pyparsing': ('https://pyparsing-docs.readthedocs.io/en/latest', None)"
+
+keywords:
+  - coverage

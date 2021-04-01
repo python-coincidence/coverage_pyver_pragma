@@ -7,7 +7,7 @@ name = "coverage_pyver_pragma"
 version = "0.2.4"
 description = "Plugin for Coverage.py to selectively ignore branches depending on the Python version."
 readme = "README.rst"
-keywords = []
+keywords = [ "coverage",]
 dynamic = [ "requires-python", "classifiers", "dependencies",]
 
 [[project.authors]]
