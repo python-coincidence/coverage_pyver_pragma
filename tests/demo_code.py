@@ -1,6 +1,6 @@
 # stdlib
-import sys
 import platform
+import sys
 
 if sys.version_info < (3, 8):  # pragma: no cover (py38+)
 	pass
