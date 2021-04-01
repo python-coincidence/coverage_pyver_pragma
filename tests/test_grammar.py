@@ -80,14 +80,17 @@ def test_grammar_current_platform_etc():
 	assert evaluate_exclude(f"{platform.system()}")
 
 
-@pytest.mark.parametrize("expression, exception", [
-		("36", ParseBaseException),
-		("36 and", ParseBaseException),
-		("py36 and", ParseBaseException),
-		("windows and", ParseBaseException),
-		("!bpython and pypy", ParseBaseException),
-		("<py38+", SyntaxError),
-		])
+@pytest.mark.parametrize(
+		"expression, exception",
+		[
+				("36", ParseBaseException),
+				("36 and", ParseBaseException),
+				("py36 and", ParseBaseException),
+				("windows and", ParseBaseException),
+				("!bpython and pypy", ParseBaseException),
+				("<py38+", SyntaxError),
+				]
+		)
 def test_bad_grammar(expression: str, exception: Type[Exception]):
 	with pytest.raises(exception):
 		evaluate_exclude(expression)
