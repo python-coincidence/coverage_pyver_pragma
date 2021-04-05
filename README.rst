@@ -26,7 +26,7 @@ coverage_pyver_pragma
 	* - Activity
 	  - |commits-latest| |commits-since| |maintained| |pypi-downloads|
 	* - QA
-	  - |codefactor| |actions_flake8| |actions_mypy| |pre_commit_ci|
+	  - |codefactor| |actions_flake8| |actions_mypy|
 	* - Other
 	  - |license| |language| |requires|
 
@@ -115,10 +115,6 @@ coverage_pyver_pragma
 .. |pypi-downloads| image:: https://img.shields.io/pypi/dm/coverage_pyver_pragma
 	:target: https://pypi.org/project/coverage_pyver_pragma/
 	:alt: PyPI - Downloads
-
-.. |pre_commit_ci| image:: https://results.pre-commit.ci/badge/github/python-coincidence/coverage_pyver_pragma/master.svg
-	:target: https://results.pre-commit.ci/latest/github/python-coincidence/coverage_pyver_pragma/master
-	:alt: pre-commit.ci status
 
 .. end shields
 
