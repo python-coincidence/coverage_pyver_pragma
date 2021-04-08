@@ -119,6 +119,7 @@ API Reference
 #
 
 # stdlib
+import os
 import platform
 import sys
 
@@ -160,9 +161,13 @@ __all__ = [
 # This ensures coverage.py records the correct coverage for these modules
 # when they are under test
 
-for module in [m for m in sys.modules if m.startswith("domdf_python_tools")]:
+for module in [m for m in sys.modules if m.startswith("domdf_python_tools")]:  # pragma: no cover (macOS)
 	if module in sys.modules:
 		del sys.modules[module]
+
+PYTHON_VERSION = os.environ.get("COV_PYTHON_VERSION", '.'.join(platform.python_version_tuple()[:2]))
+PLATFORM = os.environ.get("COV_PLATFORM", platform.system()).casefold()
+PYTHON_IMPLEMENTATION = os.environ.get("COV_PYTHON_IMPLEMENTATION", platform.python_implementation()).casefold()
 
 
 @prettify_docstrings
@@ -208,8 +213,7 @@ class VersionTag(packaging.specifiers.SpecifierSet):
 		return f"<{self.__class__.__name__}({str(self)!r})>"
 
 	def __bool__(self) -> bool:
-		current_version = '.'.join(platform.python_version_tuple()[:2])
-		return current_version in self
+		return PYTHON_VERSION in self
 
 
 @prettify_docstrings
@@ -243,12 +247,10 @@ class PlatformTag(str):
 		return f"<{self.__class__.__name__}({str(self)!r})>"
 
 	def __bool__(self) -> bool:
-		current_platform = platform.system().casefold()
-
-		if not current_platform:  # pragma: no cover
+		if not PLATFORM:  # pragma: no cover
 			return True
 
-		return current_platform == self.casefold()
+		return PLATFORM == self.casefold()
 
 
 @prettify_docstrings
@@ -280,7 +282,7 @@ class ImplementationTag(str):
 		return f"<{self.__class__.__name__}({str(self)!r})>"
 
 	def __bool__(self) -> bool:
-		return platform.python_implementation().casefold() == self.casefold()
+		return PYTHON_IMPLEMENTATION == self.casefold()
 
 
 @prettify_docstrings
