@@ -42,3 +42,9 @@ intersphinx_mapping:
 
 keywords:
   - coverage
+
+extra_sphinx_extensions:
+  - html_section
+
+exclude_files:
+  - contributing

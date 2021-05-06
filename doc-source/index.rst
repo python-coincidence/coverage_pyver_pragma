@@ -122,18 +122,11 @@ coverage_pyver_pragma
 
 .. end shields
 
-Installation
----------------
+Contents
+----------
 
-.. start installation
+.. html-section::
 
-.. installation:: coverage_pyver_pragma
-	:pypi:
-	:github:
-	:anaconda:
-	:conda-channels: conda-forge, domdfcoding
-
-.. end installation
 
 .. toctree::
 	:hidden:
@@ -142,18 +135,21 @@ Installation
 
 .. toctree::
 	:maxdepth: 3
-	:caption: Documentation
 
 	installation
+	configuration
 	syntax
 	api
-
-.. toctree::
-	:maxdepth: 3
-	:caption: Contributing
-
-	contributing
 	Source
+
+
+.. sidebar-links::
+	:caption: Links
+	:github:
+	:pypi: coverage_pyver_pragma
+
+	Contributing Guide <https://contributing-to-coincidence.readthedocs.io/en/latest/>
+
 
 .. start links
 

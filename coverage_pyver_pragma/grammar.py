@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #
 #  grammar.py
-"""
+r"""
 .. versionadded:: 0.2.0
 
 As with ``coverage.py``, lines are marked with comments in the form::
@@ -50,6 +50,9 @@ with the output of :func:`platform.system`.
 
 If the current platform cannot be determined all strings are treated as :py:obj:`True`.
 
+.. raw:: latex
+
+	\clearpage
 
 .. py:data:: IMPLEMENTATION_TAG
 
@@ -68,11 +71,11 @@ with the output of :func:`platform.python_implementation`.
 Examples
 -----------
 
-ignore if the Python version is less than or equal to 3.7::
+Ignore if the Python version is less than or equal to 3.7::
 
 	# pragma: no cover (<=py37)
 
-ignore if running on Python 3.9::
+Ignore if running on Python 3.9::
 
 	# pragma: no cover (py39)
 
@@ -91,6 +94,10 @@ Ignore when not running on macOS (Darwin)::
 Ignore when not running on CPython::
 
 	# pragma: no cover (!CPython)
+
+.. raw:: latex
+
+	\clearpage
 
 API Reference
 ----------------

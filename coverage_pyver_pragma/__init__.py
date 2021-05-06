@@ -65,8 +65,6 @@ def evaluate_exclude(expression: str) -> bool:
 
 	.. versionadded:: 0.2.4
 
-	|
-
 	:param expression:
 	"""
 
