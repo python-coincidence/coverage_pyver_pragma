@@ -157,6 +157,6 @@ Contents
 
 	View the :ref:`Function Index <genindex>` or browse the `Source Code <_modules/index.html>`__.
 
-	`Browse the GitHub Repository <https://github.com/python-coincidence/coverage_pyver_pragma>`__
+	:github:repo:`Browse the GitHub Repository <python-coincidence/coverage_pyver_pragma>`
 
 .. end links
