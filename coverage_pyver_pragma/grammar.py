@@ -16,14 +16,15 @@ Each expression consists of one or more tags
 (:py:data:`VERSION_TAG`, :py:data:`PLATFORM_TAG` or :py:data:`IMPLEMENTATION_TAG`).
 The tags can be joined with the keywords ``AND``, ``OR`` and ``NOT``, with the exclamation mark ``!`` implying ``NOT``.
 Parentheses can be used to group sub expressions.
-A series of tags without keywords in between them are evaluated with ``AND``.
+A series of tags without keywords between them are evaluated with ``AND``.
 
 .. py:data:: VERSION_TAG
 
 A ``VERSION_TAG`` comprises an optional comparator (one of ``<=``, ``<``, ``>=``, ``>``),
 a version specifier in the form ``pyXX``, and an optional ``+`` to indicate ``>=``.
 
-**Examples:**
+
+:bold-title:`Example:`
 
 .. parsed-literal::
 
@@ -39,7 +40,8 @@ a version specifier in the form ``pyXX``, and an optional ``+`` to indicate ``>=
 A ``PLATFORM_TAG`` comprises a single word which will be compared (ignoring case)
 with the output of :func:`platform.system`.
 
-**Examples:**
+
+:bold-title:`Example:`
 
 .. parsed-literal::
 
@@ -59,7 +61,8 @@ If the current platform cannot be determined all strings are treated as :py:obj:
 An ``IMPLEMENTATION_TAG`` comprises a single word which will be compared (ignoring case)
 with the output of :func:`platform.python_implementation`.
 
-**Examples:**
+
+:bold-title:`Example:`
 
 .. parsed-literal::
 
@@ -67,6 +70,7 @@ with the output of :func:`platform.python_implementation`.
 	PyPy
 	IronPython
 	Jython
+
 
 Examples
 -----------
@@ -102,6 +106,7 @@ Ignore when not running on CPython::
 API Reference
 ----------------
 
+.. automodulesumm:: coverage_pyver_pragma.grammar
 """  # noqa: D400
 #
 #  Copyright © 2021 Dominic Davis-Foster <dominic@davis-foster.co.uk>
@@ -185,7 +190,7 @@ class VersionTag(packaging.specifiers.SpecifierSet):
 	A ``VERSION_TAG`` comprises an optional comparator (one of ``<=``, ``<``, ``>=``, ``>``),
 	a version specifier in the form ``pyXX``, and an optional ``+`` to indicate ``>=``.
 
-	**Examples:**
+	:bold-title:`Examples:`
 
 	.. parsed-literal::
 
@@ -231,7 +236,7 @@ class PlatformTag(str):
 	A ``PLATFORM_TAG`` comprises a single word which will be compared (ignoring case)
 	with the output of :func:`platform.system`.
 
-	**Examples:**
+	:bold-title:`Examples:`
 
 	.. parsed-literal::
 
@@ -268,7 +273,7 @@ class ImplementationTag(str):
 	An ``IMPLEMENTATION_TAG`` comprises a single word which will be compared (ignoring case)
 	with the output of :func:`platform.python_implementation`.
 
-	**Examples:**
+	:bold-title:`Examples:`
 
 	.. parsed-literal::
 
@@ -278,6 +283,8 @@ class ImplementationTag(str):
 		Jython
 
 	:param tokens:
+
+	.. latex:vspace:: -10px
 	"""
 
 	__slots__ = ()
@@ -409,7 +416,7 @@ GRAMMAR: ParserElement = OneOrMore(
 				)
 		)
 """
-The ``coverage_pyver_pragma`` expression grammar.
+The :mod:`coverage_pyver_pragma` expression grammar.
 
 This can be used to parse an expression outside of the coverage context.
 """

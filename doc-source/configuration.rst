@@ -16,7 +16,7 @@ For instance, you are generating a report from a ``.coverage`` file produced on 
 
 	Defaults to the output of :func:`'.'.join(platform.python_version_tuple()[:2]) <platform.python_version_tuple>`.
 
-	**Example:**
+	:bold-title:`Example:`
 
 	.. prompt:: bash
 
@@ -29,7 +29,7 @@ For instance, you are generating a report from a ``.coverage`` file produced on 
 
 	Defaults to the output of :func:`platform.system`.
 
-	**Example:**
+	:bold-title:`Example:`
 
 	.. prompt:: bash
 
@@ -43,7 +43,7 @@ For instance, you are generating a report from a ``.coverage`` file produced on 
 
 	Defaults to the output of :func:`platform.python_implementation`.
 
-	**Example:**
+	:bold-title:`Example:`
 
 	.. prompt:: bash
 
