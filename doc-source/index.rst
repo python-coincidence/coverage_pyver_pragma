@@ -123,6 +123,7 @@ coverage_pyver_pragma
 
 .. end shields
 
+
 Contents
 ----------
 
@@ -142,7 +143,7 @@ Contents
 	syntax
 	api
 	Source
-
+	license
 
 .. sidebar-links::
 	:caption: Links
