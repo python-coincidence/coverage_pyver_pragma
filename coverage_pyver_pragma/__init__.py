@@ -71,9 +71,9 @@ def evaluate_exclude(expression: str) -> bool:
 	return all(list(GRAMMAR.parseString(expression.lower(), parseAll=True)))
 
 
-class PythonParser(coverage.python.PythonParser):  # noqa: D102
+class PythonParser(coverage.python.PythonParser):
 
-	def lines_matching(self, *regexes):  # noqa: D102
+	def lines_matching(self, *regexes):
 
 		combined = join_regex([*regexes, *DEFAULT_EXCLUDE])
 
