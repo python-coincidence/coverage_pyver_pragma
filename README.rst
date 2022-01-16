@@ -109,7 +109,7 @@ coverage_pyver_pragma
 	:target: https://github.com/python-coincidence/coverage_pyver_pragma/commit/master
 	:alt: GitHub last commit
 
-.. |maintained| image:: https://img.shields.io/maintenance/yes/2021
+.. |maintained| image:: https://img.shields.io/maintenance/yes/2022
 	:alt: Maintenance
 
 .. |pypi-downloads| image:: https://img.shields.io/pypi/dm/coverage_pyver_pragma
