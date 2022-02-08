@@ -4,7 +4,7 @@ build-backend = "whey"
 
 [project]
 name = "coverage_pyver_pragma"
-version = "0.3.0"
+version = "0.3.1"
 description = "Plugin for Coverage.py to selectively ignore branches depending on the Python version."
 readme = "README.rst"
 keywords = [ "coverage",]
