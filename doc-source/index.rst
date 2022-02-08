@@ -60,7 +60,8 @@ coverage_pyver_pragma
 		:workflow: mypy
 		:alt: mypy status
 
-	.. |requires| requires-io-shield::
+	.. |requires| image:: https://dependency-dash.herokuapp.com/github/python-coincidence/coverage_pyver_pragma/badge.svg
+		:target: https://dependency-dash.herokuapp.com/github/python-coincidence/coverage_pyver_pragma/
 		:alt: Requirements Status
 
 	.. |coveralls| coveralls-shield::
@@ -113,7 +114,7 @@ coverage_pyver_pragma
 		:last-commit:
 		:alt: GitHub last commit
 
-	.. |maintained| maintained-shield:: 2021
+	.. |maintained| maintained-shield:: 2022
 		:alt: Maintenance
 
 	.. |pypi-downloads| pypi-shield::
