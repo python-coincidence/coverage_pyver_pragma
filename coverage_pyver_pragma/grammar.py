@@ -107,6 +107,10 @@ API Reference
 ----------------
 
 .. automodulesumm:: coverage_pyver_pragma.grammar
+
+.. autovariable:: GRAMMAR
+	:no-value:
+
 """  # noqa: D400
 #
 #  Copyright © 2021 Dominic Davis-Foster <dominic@davis-foster.co.uk>

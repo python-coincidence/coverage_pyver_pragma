@@ -7,3 +7,4 @@ Syntax
 
 .. automodule:: coverage_pyver_pragma.grammar
 	:no-autosummary:
+	:exclude-members: GRAMMAR
