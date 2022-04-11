@@ -379,10 +379,10 @@ GREATER_THAN_EQUAL = ">="
 GREATER_THAN = '>'
 
 OPS = [LESS_THAN, LESS_THAN_EQUAL, GREATER_THAN, GREATER_THAN_EQUAL]
-COMPARATOR = Optional(oneOf(' '.join(OPS))).setResultsName("comparator")  # type: ignore[operator]
+COMPARATOR = Optional(oneOf(' '.join(OPS))).setResultsName("comparator")
 
 VERSION = Combine(CaselessLiteral("py") + Word(nums)).setResultsName("version")
-VERSION_TAG = Group(COMPARATOR + VERSION + Optional(PLUS)).setResultsName("version")  # type: ignore[operator]
+VERSION_TAG = Group(COMPARATOR + VERSION + Optional(PLUS)).setResultsName("version")
 VERSION_TAG.setParseAction(VersionTag)
 
 # Platforms (Windows, !Linux)
