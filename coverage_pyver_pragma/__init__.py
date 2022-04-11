@@ -30,12 +30,13 @@ Plugin for Coverage.py to selectively ignore branches depending on the Python ve
 import functools
 import re
 from contextlib import suppress
+from typing import Set
 
 # 3rd party
-import coverage.python  # type: ignore
-import pyparsing  # type: ignore
-from coverage.config import DEFAULT_EXCLUDE  # type: ignore
-from coverage.misc import join_regex  # type: ignore
+import coverage.python  # type: ignore[import]
+import pyparsing
+from coverage.config import DEFAULT_EXCLUDE  # type: ignore[import]
+from coverage.misc import join_regex  # type: ignore[import]
 
 # this package
 from coverage_pyver_pragma.grammar import GRAMMAR
@@ -73,7 +74,7 @@ def evaluate_exclude(expression: str) -> bool:
 
 class PythonParser(coverage.python.PythonParser):
 
-	def lines_matching(self, *regexes):
+	def lines_matching(self, *regexes) -> Set[int]:
 
 		combined = join_regex([*regexes, *DEFAULT_EXCLUDE])
 
@@ -100,5 +101,5 @@ class PythonParser(coverage.python.PythonParser):
 		return matches
 
 
-def coverage_init(*args, **kwargs):
+def coverage_init(*args, **kwargs) -> None:
 	coverage.python.PythonParser.lines_matching = PythonParser.lines_matching

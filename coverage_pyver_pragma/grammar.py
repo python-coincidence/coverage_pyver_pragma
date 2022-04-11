@@ -143,7 +143,7 @@ import sys
 import packaging.specifiers
 from domdf_python_tools.doctools import prettify_docstrings
 from domdf_python_tools.stringlist import DelimitedList
-from pyparsing import (  # type: ignore
+from pyparsing import (
 		CaselessKeyword,
 		CaselessLiteral,
 		Combine,
@@ -256,7 +256,7 @@ class PlatformTag(str):
 
 	__slots__ = ()
 
-	def __new__(cls, tokens: ParseResults):  # noqa: D102
+	def __new__(cls, tokens: ParseResults) -> "PlatformTag":  # noqa: D102
 		return super().__new__(cls, str(tokens["platform"]))
 
 	def __repr__(self) -> str:  # pragma: no cover
@@ -293,7 +293,7 @@ class ImplementationTag(str):
 
 	__slots__ = ()
 
-	def __new__(cls, tokens: ParseResults):  # noqa: D102
+	def __new__(cls, tokens: ParseResults) -> "ImplementationTag":  # noqa: D102
 		return super().__new__(cls, str(tokens["implementation"]))
 
 	def __repr__(self) -> str:  # pragma: no cover
@@ -314,7 +314,7 @@ class LogicalOp:
 	def __init__(self, tokens: ParseResults):
 		self.tokens = DelimitedList(tokens[0])
 
-	def __format__(self, format_spec):
+	def __format__(self, format_spec: str) -> str:
 		return self.tokens.__format__(format_spec)
 
 	def __getitem__(self, item):
@@ -335,7 +335,7 @@ class LogicalAND(LogicalOp):
 	:param tokens:
 	"""
 
-	def __bool__(self):
+	def __bool__(self) -> bool:
 		return bool(self[0]) and bool(self[2])
 
 
@@ -347,7 +347,7 @@ class LogicalOR(LogicalOp):
 	:param tokens:
 	"""
 
-	def __bool__(self):
+	def __bool__(self) -> bool:
 		return bool(self[0]) or bool(self[2])
 
 
@@ -359,7 +359,7 @@ class LogicalNOT(LogicalOp):
 	:param tokens:
 	"""
 
-	def __bool__(self):
+	def __bool__(self) -> bool:
 		return not bool(self[1])
 
 
@@ -379,10 +379,10 @@ GREATER_THAN_EQUAL = ">="
 GREATER_THAN = '>'
 
 OPS = [LESS_THAN, LESS_THAN_EQUAL, GREATER_THAN, GREATER_THAN_EQUAL]
-COMPARATOR = Optional(oneOf(' '.join(OPS))).setResultsName("comparator")
+COMPARATOR = Optional(oneOf(' '.join(OPS))).setResultsName("comparator")  # type: ignore[operator]
 
 VERSION = Combine(CaselessLiteral("py") + Word(nums)).setResultsName("version")
-VERSION_TAG = Group(COMPARATOR + VERSION + Optional(PLUS)).setResultsName("version")
+VERSION_TAG = Group(COMPARATOR + VERSION + Optional(PLUS)).setResultsName("version")  # type: ignore[operator]
 VERSION_TAG.setParseAction(VersionTag)
 
 # Platforms (Windows, !Linux)

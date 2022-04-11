@@ -5,7 +5,7 @@ from typing import Tuple, Type
 
 # 3rd party
 import pytest
-from pyparsing import ParseBaseException  # type: ignore
+from pyparsing import ParseBaseException
 
 # this package
 from coverage_pyver_pragma import evaluate_exclude
@@ -30,7 +30,11 @@ implementations = {*implementations, *(i.lower() for i in implementations)}
 @pytest.mark.parametrize("implementation", implementations)
 @pytest.mark.parametrize("plat", platforms)
 @pytest.mark.parametrize("version", versions_before)
-def test_grammar_dont_exclude(version: Tuple[int, int], implementation: str, plat: str):
+def test_grammar_dont_exclude(
+		version: Tuple[int, int],
+		implementation: str,
+		plat: str,
+		) -> None:
 
 	assert not evaluate_exclude(f"<py{version[0]}{version[1]} and {implementation} and {plat}")
 	assert not evaluate_exclude(
@@ -51,7 +55,11 @@ def test_grammar_dont_exclude(version: Tuple[int, int], implementation: str, pla
 @pytest.mark.parametrize("plat", platforms)
 @pytest.mark.parametrize("implementation", implementations)
 @pytest.mark.parametrize("version", versions_after)
-def test_grammar_exclude(version: Tuple[int, int], implementation: str, plat: str):
+def test_grammar_exclude(
+		version: Tuple[int, int],
+		implementation: str,
+		plat: str,
+		) -> None:
 
 	assert evaluate_exclude(f"<=py{version[0]}{version[1]} and {platform.python_implementation()}")
 	assert evaluate_exclude(f"<=py{version[0]}{version[1]} or {implementation}")
@@ -59,7 +67,7 @@ def test_grammar_exclude(version: Tuple[int, int], implementation: str, plat: st
 	assert evaluate_exclude(f"<=py{version[0]}{version[1]} or !{implementation} and {platform.system()}")
 
 
-def test_grammar_current_platform_etc():
+def test_grammar_current_platform_etc() -> None:
 	version = sys.version_info
 	assert evaluate_exclude(f"py{version[0]}{version[1]}")
 	assert evaluate_exclude(f"<=py{version[0]}{version[1]}")
@@ -91,7 +99,7 @@ def test_grammar_current_platform_etc():
 				("<py38+", SyntaxError),
 				]
 		)
-def test_bad_grammar(expression: str, exception: Type[Exception]):
+def test_bad_grammar(expression: str, exception: Type[Exception]) -> None:
 	with pytest.raises(exception):
 		evaluate_exclude(expression)
 

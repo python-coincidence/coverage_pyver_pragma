@@ -3,11 +3,11 @@ import os
 from io import StringIO
 
 # 3rd party
-import coverage  # type: ignore
+import coverage  # type: ignore[import]
 import pytest
 from coincidence import only_version
 from coincidence.regressions import check_file_regression
-from coverage.python import PythonParser  # type: ignore
+from coverage.python import PythonParser  # type: ignore[import]
 from domdf_python_tools.paths import PathPlus
 from pytest_regressions.file_regression import FileRegressionFixture
 
@@ -25,7 +25,11 @@ import coverage_pyver_pragma
 				pytest.param("3.10", marks=only_version("3.10", "Output differs on each version.")),
 				]
 		)
-def test_plugin(tmp_pathplus: PathPlus, file_regression: FileRegressionFixture, version):
+def test_plugin(
+		tmp_pathplus: PathPlus,
+		file_regression: FileRegressionFixture,
+		version: str,
+		) -> None:
 	coverage_pyver_pragma.coverage_init()
 
 	assert PythonParser.lines_matching is coverage_pyver_pragma.PythonParser.lines_matching
