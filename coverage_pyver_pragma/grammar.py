@@ -249,6 +249,8 @@ class PlatformTag(str):
 		Darwin  # macOS
 		Java
 
+	.. latex:clearpage::
+
 	If the current platform cannot be determined all strings are treated as :py:obj:`True`.
 
 	:param tokens:

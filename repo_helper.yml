@@ -14,7 +14,6 @@ use_whey: True
 min_coverage: 95
 sphinx_html_theme: furo
 python_deploy_version: 3.6
-preserve_custom_theme: true
 docs_fail_on_warning: true
 
 conda_channels:
@@ -48,11 +47,13 @@ keywords:
   - coverage
 
 extra_sphinx_extensions:
-  - sphinx_toolbox_experimental.autosummary_widths
-  - sphinx_toolbox_experimental.needspace
+  - sphinx_toolbox.more_autosummary.column_widths
+  - sphinx-favicon
 
 exclude_files:
   - contributing
 
 sphinx_conf_epilogue:
   - toctree_plus_types.add("envvar")
+  - needspace_amount = r"5\baselineskip"
+  - 'favicons = [{"rel": "icon", "href": "https://python-coincidence.github.io/assets/coincidence.ico",  "sizes": "48x48", "type": "image/vnd.microsoft.icon"}]'

@@ -49,6 +49,8 @@ For instance, you are generating a report from a ``.coverage`` file produced on 
 
 		COV_PYTHON_IMPLEMENTATION=PyPy coverage report
 
+.. latex:clearpage::
+
 If you generate your coverage reports through `tox <https://tox.readthedocs.io/en/latest/>`_
 you should configure `passenv <https://tox.readthedocs.io/en/latest/config.html?highlight=setenv#conf-passenv>`_
 to ensure the environment variables are passed through:
