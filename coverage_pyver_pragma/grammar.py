@@ -160,7 +160,7 @@ from pyparsing import (
 		opAssoc
 		)
 
-__all__ = [
+__all__ = (
 		"ImplementationTag",
 		"LogicalAND",
 		"LogicalNOT",
@@ -172,14 +172,16 @@ __all__ = [
 		"PLATFORM_TAG",
 		"IMPLEMENTATION_TAG",
 		"GRAMMAR",
-		]
+		)
 
 # This ensures coverage.py records the correct coverage for these modules
 # when they are under test
 
+# pylint: disable=loop-global-usage,dotted-import-in-loop
 for module in [m for m in sys.modules if m.startswith("domdf_python_tools")]:  # pragma: no cover (macOS)
 	if module in sys.modules:
 		del sys.modules[module]
+# pylint: enable=loop-global-usage,dotted-import-in-loop
 
 PYTHON_VERSION = os.environ.get("COV_PYTHON_VERSION", '.'.join(platform.python_version_tuple()[:2]))
 PLATFORM = os.environ.get("COV_PLATFORM", platform.system()).casefold()
@@ -380,7 +382,7 @@ LESS_THAN = '<'
 GREATER_THAN_EQUAL = ">="
 GREATER_THAN = '>'
 
-OPS = [LESS_THAN, LESS_THAN_EQUAL, GREATER_THAN, GREATER_THAN_EQUAL]
+OPS = [LESS_THAN, LESS_THAN_EQUAL, GREATER_THAN, GREATER_THAN_EQUAL]  # pylint: disable=use-tuple-over-list
 COMPARATOR = Optional(oneOf(' '.join(OPS))).setResultsName("comparator")
 
 VERSION = Combine(CaselessLiteral("py") + Word(nums)).setResultsName("version")

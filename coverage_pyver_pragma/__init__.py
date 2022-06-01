@@ -47,7 +47,7 @@ __license__: str = "MIT License"
 __version__: str = "0.3.1"
 __email__: str = "dominic@davis-foster.co.uk"
 
-__all__ = ["DSL_EXCLUDE", "evaluate_exclude"]
+__all__ = ("DSL_EXCLUDE", "evaluate_exclude")
 
 DSL_EXCLUDE = re.compile(r'.*#\s*(?:pragma|PRAGMA)[:\s]?\s*(?:no|NO)\s*(?:cover|COVER)\s*\((.*)\)')
 """
@@ -80,10 +80,11 @@ class PythonParser(coverage.python.PythonParser):
 
 		regex_c = re.compile(combined)
 		matches = set()
+		exclude = DSL_EXCLUDE
 
 		for idx, ltext in enumerate(self.lines, start=1):
 
-			dsl_m = DSL_EXCLUDE.match(ltext)
+			dsl_m = exclude.match(ltext)
 
 			# Check if it matches the DSL regex:
 			if dsl_m:
