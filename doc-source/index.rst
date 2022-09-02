@@ -60,8 +60,8 @@ coverage_pyver_pragma
 		:workflow: mypy
 		:alt: mypy status
 
-	.. |requires| image:: https://dependency-dash.herokuapp.com/github/python-coincidence/coverage_pyver_pragma/badge.svg
-		:target: https://dependency-dash.herokuapp.com/github/python-coincidence/coverage_pyver_pragma/
+	.. |requires| image:: https://dependency-dash.repo-helper.uk/github/python-coincidence/coverage_pyver_pragma/badge.svg
+		:target: https://dependency-dash.repo-helper.uk/github/python-coincidence/coverage_pyver_pragma/
 		:alt: Requirements Status
 
 	.. |coveralls| coveralls-shield::
