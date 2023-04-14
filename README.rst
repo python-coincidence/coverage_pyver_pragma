@@ -30,8 +30,8 @@ coverage_pyver_pragma
 	* - Other
 	  - |license| |language| |requires|
 
-.. |docs| image:: https://img.shields.io/readthedocs/coverage_pyver_pragma/latest?logo=read-the-docs
-	:target: https://coverage_pyver_pragma.readthedocs.io/en/latest
+.. |docs| image:: https://img.shields.io/readthedocs/coverage-pyver-pragma/latest?logo=read-the-docs
+	:target: https://coverage-pyver-pragma.readthedocs.io/en/latest
 	:alt: Documentation Build Status
 
 .. |docs_check| image:: https://github.com/python-coincidence/coverage_pyver_pragma/workflows/Docs%20Check/badge.svg

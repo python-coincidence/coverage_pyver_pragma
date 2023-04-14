@@ -22,7 +22,7 @@ file = "LICENSE"
 Homepage = "https://github.com/python-coincidence/coverage_pyver_pragma"
 "Issue Tracker" = "https://github.com/python-coincidence/coverage_pyver_pragma/issues"
 "Source Code" = "https://github.com/python-coincidence/coverage_pyver_pragma"
-Documentation = "https://coverage_pyver_pragma.readthedocs.io/en/latest"
+Documentation = "https://coverage-pyver-pragma.readthedocs.io/en/latest"
 
 [tool.whey]
 base-classifiers = [

@@ -33,7 +33,7 @@ coverage_pyver_pragma
 		  - |license| |language| |requires|
 
 	.. |docs| rtfd-shield::
-		:project: coverage_pyver_pragma
+		:project: coverage-pyver-pragma
 		:alt: Documentation Build Status
 
 	.. |docs_check| actions-shield::
