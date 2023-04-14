@@ -101,7 +101,7 @@ coverage_pyver_pragma
 .. |language| image:: https://img.shields.io/github/languages/top/python-coincidence/coverage_pyver_pragma
 	:alt: GitHub top language
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/python-coincidence/coverage_pyver_pragma/v0.3.1
+.. |commits-since| image:: https://img.shields.io/github/commits-since/python-coincidence/coverage_pyver_pragma/v0.3.2
 	:target: https://github.com/python-coincidence/coverage_pyver_pragma/pulse
 	:alt: GitHub commits since tagged version
 
