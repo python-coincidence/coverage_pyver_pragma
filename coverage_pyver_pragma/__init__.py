@@ -33,10 +33,10 @@ from contextlib import suppress
 from typing import Set
 
 # 3rd party
-import coverage.python  # type: ignore[import]
+import coverage.python
 import pyparsing
-from coverage.config import DEFAULT_EXCLUDE  # type: ignore[import]
-from coverage.misc import join_regex  # type: ignore[import]
+from coverage.config import DEFAULT_EXCLUDE
+from coverage.misc import join_regex
 
 # this package
 from coverage_pyver_pragma.grammar import GRAMMAR
@@ -103,4 +103,4 @@ class PythonParser(coverage.python.PythonParser):
 
 
 def coverage_init(*args, **kwargs) -> None:
-	coverage.python.PythonParser.lines_matching = PythonParser.lines_matching
+	coverage.python.PythonParser.lines_matching = PythonParser.lines_matching  # type: ignore[assignment]

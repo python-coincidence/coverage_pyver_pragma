@@ -3,11 +3,11 @@ import os
 from io import StringIO
 
 # 3rd party
-import coverage  # type: ignore[import]
+import coverage
 import pytest
 from coincidence import only_version
 from coincidence.regressions import check_file_regression
-from coverage.python import PythonParser  # type: ignore[import]
+from coverage.python import PythonParser
 from domdf_python_tools.paths import PathPlus
 from pytest_regressions.file_regression import FileRegressionFixture
 
