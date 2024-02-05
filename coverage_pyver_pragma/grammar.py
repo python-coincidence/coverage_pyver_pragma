@@ -321,7 +321,7 @@ class LogicalOp:
 	def __format__(self, format_spec: str) -> str:
 		return self.tokens.__format__(format_spec)
 
-	def __getitem__(self, item):
+	def __getitem__(self, item):  # noqa: MAN001,MAN002
 		return self.tokens[item]
 
 	def __str__(self) -> str:
