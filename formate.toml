@@ -45,4 +45,4 @@ known_third_party = [
     "pytest_rerunfailures",
     "pytest_timeout",
 ]
-known_first_party = "coverage_pyver_pragma"
+known_first_party = [ "coverage_pyver_pragma",]
