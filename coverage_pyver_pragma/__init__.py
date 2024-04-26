@@ -74,6 +74,7 @@ def evaluate_exclude(expression: str) -> bool:
 
 class PythonParser(coverage.python.PythonParser):
 
+	@functools.lru_cache()
 	def lines_matching(self, *regexes) -> Set[int]:  # pragma: no cover (py311+)  # TODO: why?
 
 		combined = join_regex([*regexes, *DEFAULT_EXCLUDE])
