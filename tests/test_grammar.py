@@ -15,7 +15,7 @@ platforms.remove(platform.system())
 platforms = {*platforms, *(p.lower() for p in platforms)}
 
 versions = [(2, 7)]
-versions.extend((3, v) for v in range(13))
+versions.extend((3, v) for v in range(14))
 versions.append((4, 0))
 
 versions_before = versions[:versions.index(sys.version_info[:2])]

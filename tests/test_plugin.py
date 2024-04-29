@@ -5,7 +5,7 @@ from io import StringIO
 # 3rd party
 import coverage
 import pytest
-from coincidence import only_version
+from coincidence import min_version, only_version
 from coincidence.regressions import check_file_regression
 from coverage.python import PythonParser
 from domdf_python_tools.paths import PathPlus
@@ -22,7 +22,7 @@ import coverage_pyver_pragma
 				pytest.param("3.7", marks=only_version(3.7, "Output differs on each version.")),
 				pytest.param("3.8", marks=only_version(3.8, "Output differs on each version.")),
 				pytest.param("3.9", marks=only_version(3.9, "Output differs on each version.")),
-				pytest.param("3.10", marks=only_version("3.10", "Output differs on each version.")),
+				pytest.param("3.10", marks=min_version("3.10", "Output differs on each version.")),
 				]
 		)
 def test_plugin(
