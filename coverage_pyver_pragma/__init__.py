@@ -74,7 +74,6 @@ def evaluate_exclude(expression: str) -> bool:
 
 class PythonParser(coverage.python.PythonParser):
 
-	@functools.lru_cache()
 	def lines_matching(self, *regexes) -> Set[int]:  # pragma: no cover (py311+)  # TODO: why?
 
 		combined = join_regex([*regexes, *DEFAULT_EXCLUDE])
@@ -83,7 +82,7 @@ class PythonParser(coverage.python.PythonParser):
 		matches = set()
 		exclude = DSL_EXCLUDE
 
-		for idx, ltext in enumerate(self.lines, start=1):
+		for idx, ltext in enumerate(self.text.split('\n'), start=1):
 
 			dsl_m = exclude.match(ltext)
 
