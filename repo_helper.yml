@@ -20,7 +20,6 @@ conda_channels:
 
 # Versions to run tests for
 python_versions:
-  '3.6':
   '3.7':
   "3.8":
   "3.9":
@@ -29,8 +28,8 @@ python_versions:
     experimental: true
   "3.12":
     experimental: true
-  "3.13-dev":
-  pypy36:
+  "3.13":
+    experimental: true
   pypy37:
   pypy38:
   pypy39:
