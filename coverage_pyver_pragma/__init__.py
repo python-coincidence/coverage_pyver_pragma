@@ -44,7 +44,7 @@ from coverage_pyver_pragma.grammar import GRAMMAR
 __author__: str = "Dominic Davis-Foster"
 __copyright__: str = "2020-2021 Dominic Davis-Foster"
 __license__: str = "MIT License"
-__version__: str = "0.3.3"
+__version__: str = "0.4.0"
 __email__: str = "dominic@davis-foster.co.uk"
 
 __all__ = ("DSL_EXCLUDE", "evaluate_exclude")

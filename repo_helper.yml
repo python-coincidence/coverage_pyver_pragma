@@ -3,7 +3,7 @@ repo_name: coverage_pyver_pragma
 copyright_years: "2020-2021"
 author: "Dominic Davis-Foster"
 email: "dominic@davis-foster.co.uk"
-version: "0.3.3"
+version: "0.4.0"
 username: "python-coincidence"
 assignee: "domdfcoding"
 primary_conda_channel: "domdfcoding"
