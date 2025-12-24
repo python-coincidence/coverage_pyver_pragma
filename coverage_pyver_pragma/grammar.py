@@ -154,9 +154,9 @@ from pyparsing import (
 		ParserElement,
 		ParseResults,
 		Word,
-		infixNotation,
+		infix_notation,
 		nums,
-		oneOf,
+		one_of,
 		opAssoc
 		)
 
@@ -375,7 +375,7 @@ NOT = CaselessKeyword("not") | Literal('!')
 # Grammar comprises (case insensitive):
 # Python versions (<=pyXXX, pyXXX+)
 
-PLUS = Literal('+').setResultsName("plus")
+PLUS = Literal('+').set_results_name("plus")
 
 LESS_THAN_EQUAL = "<="
 LESS_THAN = '<'
@@ -383,11 +383,11 @@ GREATER_THAN_EQUAL = ">="
 GREATER_THAN = '>'
 
 OPS = [LESS_THAN, LESS_THAN_EQUAL, GREATER_THAN, GREATER_THAN_EQUAL]  # pylint: disable=use-tuple-over-list
-COMPARATOR = Optional(oneOf(' '.join(OPS))).setResultsName("comparator")
+COMPARATOR = Optional(one_of(' '.join(OPS))).set_results_name("comparator")
 
-VERSION = Combine(CaselessLiteral("py") + Word(nums)).setResultsName("version")
-VERSION_TAG = Group(COMPARATOR + VERSION + Optional(PLUS)).setResultsName("version")
-VERSION_TAG.setParseAction(VersionTag)
+VERSION = Combine(CaselessLiteral("py") + Word(nums)).set_results_name("version")
+VERSION_TAG = Group(COMPARATOR + VERSION + Optional(PLUS)).set_results_name("version")
+VERSION_TAG.set_parse_action(VersionTag)
 
 # Platforms (Windows, !Linux)
 # TODO: other platforms
@@ -397,8 +397,8 @@ LINUX = CaselessLiteral("linux")
 DARWIN = CaselessLiteral("darwin")
 JAVA = CaselessLiteral("java")
 
-PLATFORM_TAG = (WINDOWS | LINUX | DARWIN | JAVA).setResultsName("platform")
-PLATFORM_TAG.setParseAction(PlatformTag)
+PLATFORM_TAG = (WINDOWS | LINUX | DARWIN | JAVA).set_results_name("platform")
+PLATFORM_TAG.set_parse_action(PlatformTag)
 
 # Implementations (CPython, !PyPy)
 # TODO: other python implementations
@@ -408,13 +408,13 @@ PYPY = CaselessLiteral("pypy")
 JYTHON = CaselessLiteral("jython")
 IRONPYTHON = CaselessLiteral("ironpython")
 
-IMPLEMENTATION_TAG = (CPYTHON | PYPY | JYTHON | IRONPYTHON).setResultsName("implementation")
-IMPLEMENTATION_TAG.setParseAction(ImplementationTag)
+IMPLEMENTATION_TAG = (CPYTHON | PYPY | JYTHON | IRONPYTHON).set_results_name("implementation")
+IMPLEMENTATION_TAG.set_parse_action(ImplementationTag)
 
 ELEMENTS = VERSION_TAG | PLATFORM_TAG | IMPLEMENTATION_TAG
 
 GRAMMAR: ParserElement = OneOrMore(
-		infixNotation(
+		infix_notation(
 				ELEMENTS,
 				[
 						(NOT, 1, opAssoc.RIGHT, LogicalNOT),

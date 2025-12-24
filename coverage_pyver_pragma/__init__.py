@@ -69,7 +69,7 @@ def evaluate_exclude(expression: str) -> bool:
 	:param expression:
 	"""
 
-	return all(list(GRAMMAR.parseString(expression.lower(), parseAll=True)))
+	return all(list(GRAMMAR.parse_string(expression.lower(), parse_all=True)))
 
 
 class PythonParser(coverage.python.PythonParser):
