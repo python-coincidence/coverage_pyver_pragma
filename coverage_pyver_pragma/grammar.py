@@ -420,8 +420,8 @@ GRAMMAR: ParserElement = OneOrMore(
 						(NOT, 1, opAssoc.RIGHT, LogicalNOT),
 						(AND, 2, opAssoc.LEFT, LogicalAND),
 						(OR, 2, opAssoc.LEFT, LogicalOR),
-						]
-				)
+						],
+				),
 		)
 """
 The :mod:`coverage_pyver_pragma` expression grammar.
