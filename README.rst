@@ -109,11 +109,11 @@ coverage_pyver_pragma
 	:target: https://github.com/python-coincidence/coverage_pyver_pragma/commit/master
 	:alt: GitHub last commit
 
-.. |maintained| image:: https://img.shields.io/maintenance/yes/2025
+.. |maintained| image:: https://img.shields.io/maintenance/yes/2026
 	:alt: Maintenance
 
 .. |pypi-downloads| image:: https://img.shields.io/pypi/dm/coverage_pyver_pragma
-	:target: https://pypi.org/project/coverage_pyver_pragma/
+	:target: https://pypistats.org/packages/coverage_pyver_pragma
 	:alt: PyPI - Downloads
 
 .. end shields
@@ -129,7 +129,7 @@ To install with ``pip``:
 
 .. code-block:: bash
 
-	$ python -m pip install coverage_pyver_pragma
+	$ python -m pip install coverage-pyver-pragma
 
 To install with ``conda``:
 
