@@ -38,7 +38,7 @@ def test_grammar_dont_exclude(
 
 	assert not evaluate_exclude(f"<py{version[0]}{version[1]} and {implementation} and {plat}")
 	assert not evaluate_exclude(
-			f"<py{version[0]}{version[1]} and not {platform.python_implementation()} and {plat}"
+			f"<py{version[0]}{version[1]} and not {platform.python_implementation()} and {plat}",
 			)
 	assert not evaluate_exclude(f"<py{version[0]}{version[1]} and ! {platform.python_implementation()} and {plat}")
 	assert not evaluate_exclude(f"<py{version[0]}{version[1]} or not {implementation} and {plat}")
@@ -97,7 +97,7 @@ def test_grammar_current_platform_etc() -> None:
 				("windows and", ParseBaseException),
 				("!bpython and pypy", ParseBaseException),
 				("<py38+", SyntaxError),
-				]
+				],
 		)
 def test_bad_grammar(expression: str, exception: Type[Exception]) -> None:
 	with pytest.raises(exception):
