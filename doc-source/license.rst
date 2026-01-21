@@ -7,4 +7,4 @@ License
 .. license-info:: MIT
 
 .. license::
-	:py: coverage_pyver_pragma
+	:py: coverage-pyver-pragma

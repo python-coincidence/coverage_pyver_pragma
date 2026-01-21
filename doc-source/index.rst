@@ -71,22 +71,22 @@ coverage_pyver_pragma
 		:alt: CodeFactor Grade
 
 	.. |pypi-version| pypi-shield::
-		:project: coverage_pyver_pragma
+		:project: coverage-pyver-pragma
 		:version:
 		:alt: PyPI - Package Version
 
 	.. |supported-versions| pypi-shield::
-		:project: coverage_pyver_pragma
+		:project: coverage-pyver-pragma
 		:py-versions:
 		:alt: PyPI - Supported Python Versions
 
 	.. |supported-implementations| pypi-shield::
-		:project: coverage_pyver_pragma
+		:project: coverage-pyver-pragma
 		:implementations:
 		:alt: PyPI - Supported Implementations
 
 	.. |wheel| pypi-shield::
-		:project: coverage_pyver_pragma
+		:project: coverage-pyver-pragma
 		:wheel:
 		:alt: PyPI - Wheel
 
@@ -118,7 +118,7 @@ coverage_pyver_pragma
 		:alt: Maintenance
 
 	.. |pypi-downloads| pypi-shield::
-		:project: coverage_pyver_pragma
+		:project: coverage-pyver-pragma
 		:downloads: month
 		:alt: PyPI - Downloads
 

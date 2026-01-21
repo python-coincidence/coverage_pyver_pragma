@@ -70,20 +70,20 @@ coverage_pyver_pragma
 	:target: https://www.codefactor.io/repository/github/python-coincidence/coverage_pyver_pragma
 	:alt: CodeFactor Grade
 
-.. |pypi-version| image:: https://img.shields.io/pypi/v/coverage_pyver_pragma
-	:target: https://pypi.org/project/coverage_pyver_pragma/
+.. |pypi-version| image:: https://img.shields.io/pypi/v/coverage-pyver-pragma
+	:target: https://pypi.org/project/coverage-pyver-pragma/
 	:alt: PyPI - Package Version
 
-.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/coverage_pyver_pragma?logo=python&logoColor=white
-	:target: https://pypi.org/project/coverage_pyver_pragma/
+.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/coverage-pyver-pragma?logo=python&logoColor=white
+	:target: https://pypi.org/project/coverage-pyver-pragma/
 	:alt: PyPI - Supported Python Versions
 
-.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/coverage_pyver_pragma
-	:target: https://pypi.org/project/coverage_pyver_pragma/
+.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/coverage-pyver-pragma
+	:target: https://pypi.org/project/coverage-pyver-pragma/
 	:alt: PyPI - Supported Implementations
 
-.. |wheel| image:: https://img.shields.io/pypi/wheel/coverage_pyver_pragma
-	:target: https://pypi.org/project/coverage_pyver_pragma/
+.. |wheel| image:: https://img.shields.io/pypi/wheel/coverage-pyver-pragma
+	:target: https://pypi.org/project/coverage-pyver-pragma/
 	:alt: PyPI - Wheel
 
 .. |conda-version| image:: https://img.shields.io/conda/v/domdfcoding/coverage_pyver_pragma?logo=anaconda
@@ -112,8 +112,8 @@ coverage_pyver_pragma
 .. |maintained| image:: https://img.shields.io/maintenance/yes/2026
 	:alt: Maintenance
 
-.. |pypi-downloads| image:: https://img.shields.io/pypi/dm/coverage_pyver_pragma
-	:target: https://pypistats.org/packages/coverage_pyver_pragma
+.. |pypi-downloads| image:: https://img.shields.io/pypi/dm/coverage-pyver-pragma
+	:target: https://pypistats.org/packages/coverage-pyver-pragma
 	:alt: PyPI - Downloads
 
 .. end shields
