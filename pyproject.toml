@@ -3,7 +3,7 @@ requires = [ "whey",]
 build-backend = "whey"
 
 [project]
-name = "coverage_pyver_pragma"
+name = "coverage-pyver-pragma"
 version = "0.4.0"
 description = "Plugin for Coverage.py to selectively ignore branches depending on the Python version."
 readme = "README.rst"
@@ -34,6 +34,7 @@ python-versions = [ "3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13",]
 python-implementations = [ "CPython", "PyPy",]
 platforms = [ "Windows", "macOS", "Linux",]
 license-key = "MIT"
+package = "coverage_pyver_pragma"
 
 [tool.mkrecipe]
 extras = "all"
